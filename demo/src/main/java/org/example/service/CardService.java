@@ -1,5 +1,6 @@
 package org.example.service;
 
+
 import lombok.RequiredArgsConstructor;
 import org.example.dto.CardRequest;
 import org.example.exceção.NoItemException;
@@ -24,7 +25,6 @@ public class CardService {
                 () -> new NoItemException("Cliente não encontrado")
         );
         newCard.setCostumer(costumer);
-        newCard.setCvv(cardRequest.getCvv());
        // newCard.setPagamento(cardRequest.get);
         newCard.setDataDevalidade(cardRequest.getDataDeValidade());
         newCard.setNomeClienteCartao(cardRequest.getNomeClienteCartao());

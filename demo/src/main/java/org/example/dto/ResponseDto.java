@@ -1,11 +1,11 @@
 package org.example.dto;
 
-import jakarta.transaction.Transactional;
+
 import lombok.Getter;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
-
 
 @Transactional
 public class ResponseDto {

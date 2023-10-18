@@ -7,8 +7,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.AddresRequest;
 import org.example.dto.ResponseDto;
+import org.example.model.Address;
 import org.example.service.AddressService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,15 +41,10 @@ public class AddressController {
     }
   }
   @PutMapping("/{idAddress}")
-  @Transactional(rollbackOn = Exception.class )
-  public ResponseEntity updateAddress(@Valid @PathVariable(value = "idAddress")Long id, @Valid @RequestBody AddresRequest addresRequest){
+  public ResponseEntity updateAddress(@PathVariable Long id, @RequestBody AddresRequest address){
     try {
-        addressService.updateAllData(id,addresRequest);
-      return new ResponseEntity<>(new ResponseDto("Atualizado"),HttpStatus.OK);
-    }catch (ConstraintViolationException ex) {
-        Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
-        List<String> errorMessages = violations.stream().map(ConstraintViolation::getMessage).collect(Collectors.toList());
-        return new ResponseEntity<>(new ResponseDto(errorMessages), HttpStatus.BAD_REQUEST);
+        addressService.updateAllData(id,address);
+         return new ResponseEntity<>(new ResponseDto("Atualizado"),HttpStatus.OK);
      }catch (Exception erro){
       return new ResponseEntity<>(erro.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
     }

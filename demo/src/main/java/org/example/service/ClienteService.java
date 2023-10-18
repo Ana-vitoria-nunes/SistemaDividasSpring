@@ -8,12 +8,9 @@ import org.example.dto.ClienteRequest;
 import org.example.exceção.NoItemException;
 import org.example.model.Costumer;
 import org.example.repository.CostumerRepository;
-import org.example.repository.PasswordEncoderServiceRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
-
-
 
 
 @Service
@@ -27,13 +24,13 @@ public class ClienteService {
 
     private final CostumerRepository costumerRepository;
     private final ModelMapper mapper;
-    private final PasswordEncoderServiceRepository passwordEncoderService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    //private final PasswordEncoderServiceRepository passwordEncoderService;
+   // private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Costumer saveCostumer (@Valid ClienteRequest dtoCliente) {
         Costumer costumer = mapper.map(dtoCliente, Costumer.class);
-        String senhaCriptografada = passwordEncoderService.encodePassword(dtoCliente.getSenha(), bCryptPasswordEncoder);
-        costumer.setSenha(senhaCriptografada);
+      //  String senhaCriptografada = passwordEncoderService.encodePassword(dtoCliente.getSenha(), bCryptPasswordEncoder);
+        costumer.setSenha(dtoCliente.getSenha());
         costumerRepository.save(costumer);
         return costumer;
     }

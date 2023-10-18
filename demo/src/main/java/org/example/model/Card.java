@@ -1,16 +1,20 @@
 package org.example.model;
 
+
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.Year;
+
 import java.time.YearMonth;
 import java.util.List;
 
@@ -20,8 +24,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Card {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class    Card {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne

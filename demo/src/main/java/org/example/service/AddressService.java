@@ -1,7 +1,6 @@
 package org.example.service;
 
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.AddresRequest;
 import org.example.exceção.NoItemException;
@@ -23,7 +22,7 @@ public class AddressService {
 
     private final ModelMapper mapper;
 
-    public long salvarEndereço(@Valid AddresRequest addresRequestDto) {
+    public long salvarEndereço(AddresRequest addresRequestDto) {
      Costumer costumer = costumerRepository.findById(addresRequestDto.getIdCostumer())
             .orElseThrow(() -> new NoItemException("Id do cliente não encontrado"));
 
@@ -41,8 +40,6 @@ public class AddressService {
 
         return newAddress.getId_Endereco();
     }
-
-    @Transactional
     public Address updateAllData(Long id, AddresRequest addresRequest) {
        Address address = addressRepository.findById(id).orElseThrow(()->
                new NoItemException("Endereço id não encontrado"));

@@ -1,9 +1,12 @@
 package org.example.repository;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-public interface PasswordEncoderServiceRepository {
-    String encodePassword(String password, BCryptPasswordEncoder encoder);
 
-}
+
+//public interface PasswordEncoderServiceRepository {
+//    String encodePassword(String password, BCryptPasswordEncoder encoder);
+//
+//}
 
