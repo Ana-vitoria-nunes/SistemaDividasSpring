@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+
+
 //(exclude = {SecurityAutoConfiguration.class})
 @SpringBootApplication// -> indica que não precisa de autorização para executar a classe por enquanto
 public class SistemaDividasApplication {
