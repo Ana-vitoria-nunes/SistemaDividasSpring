@@ -1,21 +1,17 @@
 package org.example.controller;
 
-import com.example.demo.dto.ClienteRequest;
-import com.example.demo.dto.ResponseDto;
-import com.example.demo.exceção.ApplicationAdviceController;
-import com.example.demo.exceção.UniqueIdException;
-import com.example.demo.service.ClienteService;
+
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.example.dto.ClienteRequest;
+import org.example.dto.ResponseDto;
+import org.example.service.ClienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;

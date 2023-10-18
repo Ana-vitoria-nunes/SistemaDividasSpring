@@ -6,7 +6,9 @@ import com.example.demo.model.Card;
 import com.example.demo.model.Debts;
 import com.example.demo.repository.CardRepository;
 import com.example.demo.repository.DebtsRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.dto.DebtsRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class DebtsService {
                 private final CardRepository cardRepository;
                 private final DebtsRepository debtsRepository;
-        public Debts save (DebtsRequest debtsRequest){
+        public Debts save (@Valid DebtsRequest debtsRequest){
                 Card card = cardRepository.findById(debtsRequest.getIdCard()).orElseThrow(()->
                         new NoItemException("Cartão não encontrado"));
 

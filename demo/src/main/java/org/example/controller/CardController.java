@@ -1,11 +1,11 @@
 package org.example.controller;
 
-import com.example.demo.dto.CardRequest;
-import com.example.demo.dto.ResponseDto;
-import com.example.demo.service.CardService;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
+import org.example.dto.CardRequest;
+import org.example.dto.ResponseDto;
+import org.example.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

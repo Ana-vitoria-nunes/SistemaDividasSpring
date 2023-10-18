@@ -1,14 +1,19 @@
 package org.example.service;
 
-import com.example.demo.ClienteRequest;
-import com.example.demo.exceção.NoItemException;
-import com.example.demo.model.Costumer;
-import com.example.demo.repository.CostumerRepository;
+
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.dto.ClienteRequest;
+import org.example.exceção.NoItemException;
+import org.example.model.Costumer;
+import org.example.repository.CostumerRepository;
+import org.example.repository.PasswordEncoderServiceRepository;
 import org.modelmapper.ModelMapper;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+
 
 
 @Service
@@ -22,11 +27,13 @@ public class ClienteService {
 
     private final CostumerRepository costumerRepository;
     private final ModelMapper mapper;
- //   private final PasswordEncoder encoder;
+    private final PasswordEncoderServiceRepository passwordEncoderService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public Costumer saveCostumer (ClienteRequest dtoCliente) {
+    public Costumer saveCostumer (@Valid ClienteRequest dtoCliente) {
         Costumer costumer = mapper.map(dtoCliente, Costumer.class);
-      //  costumer.setSenha(encoder.encode(costumer.getSenha()));
+        String senhaCriptografada = passwordEncoderService.encodePassword(dtoCliente.getSenha(), bCryptPasswordEncoder);
+        costumer.setSenha(senhaCriptografada);
         costumerRepository.save(costumer);
         return costumer;
     }

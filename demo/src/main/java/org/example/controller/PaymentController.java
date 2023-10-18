@@ -1,14 +1,16 @@
 package org.example.controller;
 
-import com.example.demo.dto.DebstRequestPayment;
-import com.example.demo.dto.PaymentDto;
-import com.example.demo.dto.ResponseDto;
-import com.example.demo.service.PaymentService;
 import lombok.RequiredArgsConstructor;
+import org.example.dto.DebstRequestPayment;
+import org.example.dto.PaymentDto;
+import org.example.dto.ResponseDto;
+import org.example.service.PaymentService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/pagamento")

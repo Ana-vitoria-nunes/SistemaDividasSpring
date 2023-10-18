@@ -1,12 +1,12 @@
 package org.example.controller;
 
-import com.example.demo.dto.DebtsRequest;
-import com.example.demo.dto.ResponseDto;
-import com.example.demo.service.DebtsService;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.dto.DebtsRequest;
+import org.example.dto.ResponseDto;
+import org.example.service.DebtsService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/divida")
 @RequiredArgsConstructor
 public class DebtsController {
-    private final  DebtsService debtsService;
+    private final DebtsService debtsService;
     @PostMapping
     public ResponseEntity saveDebts(@Valid @RequestBody DebtsRequest debtsRequest){
         try {

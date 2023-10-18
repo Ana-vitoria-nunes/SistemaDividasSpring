@@ -1,8 +1,14 @@
 package org.example.service;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.dto.AddresRequest;
+import org.example.exceção.NoItemException;
+import org.example.model.Address;
+import org.example.model.Costumer;
 import org.example.repository.AddressRepository;
+import org.example.repository.CostumerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +23,7 @@ public class AddressService {
 
     private final ModelMapper mapper;
 
-    public long salvarEndereço(AddresRequest addresRequestDto) {
+    public long salvarEndereço(@Valid AddresRequest addresRequestDto) {
      Costumer costumer = costumerRepository.findById(addresRequestDto.getIdCostumer())
             .orElseThrow(() -> new NoItemException("Id do cliente não encontrado"));
 

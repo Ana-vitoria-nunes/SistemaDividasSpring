@@ -1,17 +1,14 @@
 package org.example.controller;
 
-import com.example.demo.dto.AddresRequest;
-import com.example.demo.dto.ResponseDto;
-import com.example.demo.exceção.UniqueIdException;
-import com.example.demo.service.AddressService;
-import com.example.demo.service.AddressService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.dto.AddresRequest;
+import org.example.dto.ResponseDto;
+import org.example.service.AddressService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

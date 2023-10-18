@@ -1,17 +1,17 @@
 package org.example.service;
 
-import com.example.demo.DebstRequestPayment;
-import com.example.demo.ResponseDto;
-import com.example.demo.PaymentDto;
-import com.example.demo.exceção.NoItemException;
-import com.example.demo.model.Card;
-import com.example.demo.model.Debts;
-import com.example.demo.model.Payment;
-import com.example.demo.model.Status;
-import com.example.demo.repository.CardRepository;
-import com.example.demo.repository.DebtsRepository;
-import com.example.demo.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
+import org.example.dto.DebstRequestPayment;
+import org.example.dto.PaymentDto;
+import org.example.dto.ResponseDto;
+import org.example.exceção.NoItemException;
+import org.example.model.Card;
+import org.example.model.Debts;
+import org.example.model.Payment;
+import org.example.model.Status;
+import org.example.repository.CardRepository;
+import org.example.repository.DebtsRepository;
+import org.example.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -25,7 +25,7 @@ public class PaymentService {
       private final CardRepository cardRepository;
       private double juros = 0;
       private int parcela = 0;
-    public Payment insertValueAcordingToDebts(DebstRequestPayment requestPayment, PaymentDto paymentDtos) {
+    public Payment insertValueAcordingToDebts(DebstRequestPayment requestPayment, PaymentDto paymentDto) {
         // achar o id da divida OK
         // pegar a divida e calcular com o juros e as parcelas OK
         // inserir no banco de dados OK
@@ -70,11 +70,11 @@ public class PaymentService {
         BigDecimal valorTotalEmprestimo = debts.getDivida().multiply(BigDecimal.ONE.add(BigDecimal.valueOf(juros)));
         BigDecimal valorTotalParcela = valorTotalEmprestimo.divide(BigDecimal.valueOf(parcela), 2, BigDecimal.ROUND_HALF_UP);
 
-        paymentDtos.setValorTotalParcela(valorTotalParcela);
-        paymentDtos.setValorTotalEmprestimo(valorTotalEmprestimo);
+        paymentDto.setValorTotalParcela(valorTotalParcela);
+        paymentDto.setValorTotalEmprestimo(valorTotalEmprestimo);
         paymentMapDto.setIdCard(card);
-        paymentMapDto.setValorTotalEmprestimo(paymentDtos.getValorTotalEmprestimo());
-        paymentMapDto.setValorTotalParcela(paymentDtos.getValorTotalParcela());
+        paymentMapDto.setValorTotalEmprestimo(paymentDto.getValorTotalEmprestimo());
+        paymentMapDto.setValorTotalParcela(paymentDto.getValorTotalParcela());
 
         paymentMapDto.setDataHoraDivida(paymentMapDto.getDataHoraDivida());
 

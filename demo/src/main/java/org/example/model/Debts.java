@@ -1,14 +1,11 @@
 package org.example.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor

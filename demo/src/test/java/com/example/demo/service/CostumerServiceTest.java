@@ -1,5 +1,9 @@
 package com.example.demo.service;
 
+import org.example.dto.ClienteRequest;
+import org.example.model.Costumer;
+import org.example.repository.CostumerRepository;
+import org.example.service.ClienteService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
