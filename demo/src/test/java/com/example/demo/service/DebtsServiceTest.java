@@ -1,10 +1,11 @@
 package com.example.demo.service;
 
-import com.example.demo.DebtsRequest;
-import com.example.demo.model.Card;
-import com.example.demo.model.Debts;
-import com.example.demo.repository.CardRepository;
-import com.example.demo.repository.DebtsRepository;
+import org.example.dto.DebtsRequest;
+import org.example.model.Card;
+import org.example.model.Debts;
+import org.example.repository.CardRepository;
+import org.example.repository.DebtsRepository;
+import org.example.service.DebtsService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,9 +26,9 @@ import static org.mockito.Mockito.when;
 class DebtsServiceTest {
 
     @Mock
-    private  CardRepository cardRepository;
+    private CardRepository cardRepository;
     @Mock
-    private  DebtsRepository debtsRepository;
+    private DebtsRepository debtsRepository;
 
     @InjectMocks
     private DebtsService service;
