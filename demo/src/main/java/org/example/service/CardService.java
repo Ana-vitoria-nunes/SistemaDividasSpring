@@ -1,12 +1,12 @@
 package org.example.service;
 
-import com.example.demo.CardRequest;
-import com.example.demo.exceção.NoItemException;
-import com.example.demo.model.Card;
-import com.example.demo.model.Costumer;
-import com.example.demo.repository.CardRepository;
-import com.example.demo.repository.CostumerRepository;
 import lombok.RequiredArgsConstructor;
+import org.example.dto.CardRequest;
+import org.example.exceção.NoItemException;
+import org.example.model.Card;
+import org.example.model.Costumer;
+import org.example.repository.CardRepository;
+import org.example.repository.CostumerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class CardService {
     private final ModelMapper mapper;
 
     // colocar um método para confirmar dados
-    public Card saveCard ( CardRequest cardRequest){
+    public Card saveCard (CardRequest cardRequest){
         Card newCard = new Card();
         Costumer costumer = costumerRepository.findById(cardRequest.getIdCostumer()).orElseThrow(
                 () -> new NoItemException("Cliente não encontrado")

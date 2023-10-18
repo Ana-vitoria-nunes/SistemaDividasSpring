@@ -1,13 +1,8 @@
 package org.example.service;
 
-import com.example.demo.AddresRequest;
-import com.example.demo.exceção.NoItemException;
-import com.example.demo.model.Address;
-import com.example.demo.model.Costumer;
-import com.example.demo.repository.AddressRepository;
-import com.example.demo.repository.CostumerRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.example.repository.AddressRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
