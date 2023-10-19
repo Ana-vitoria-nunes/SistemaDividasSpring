@@ -13,5 +13,5 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class DebtsRequest {
     private BigDecimal dividas;
-    private Long idCard;
+    private String idexternoCard;
 }

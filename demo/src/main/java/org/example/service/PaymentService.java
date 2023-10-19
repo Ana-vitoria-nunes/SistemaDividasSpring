@@ -30,10 +30,10 @@ public class PaymentService {
         // pegar a divida e calcular com o juros e as parcelas OK
         // inserir no banco de dados OK
 
-        Debts debts = debtsRepository.findById(requestPayment.getIdDebts()).orElseThrow(() ->
+        Debts debts = debtsRepository.findByExternalIdDebts(requestPayment.getIdexternoDebts()).orElseThrow(() ->
                 new NoItemException("Divida não encontrada"));
 
-        Card card = cardRepository.findById(requestPayment.getIdCard()).orElseThrow(() ->
+        Card card = cardRepository.findByExternalIdCard(requestPayment.getIdexternoCard()).orElseThrow(() ->
                 new NoItemException("Cartão não encontrado"));
 
 
@@ -70,6 +70,7 @@ public class PaymentService {
         BigDecimal valorTotalEmprestimo = debts.getDivida().multiply(BigDecimal.ONE.add(BigDecimal.valueOf(juros)));
         BigDecimal valorTotalParcela = valorTotalEmprestimo.divide(BigDecimal.valueOf(parcela), 2, BigDecimal.ROUND_HALF_UP);
 
+        paymentMapDto.generateAndSetExternalIdPayment();
         paymentDto.setValorTotalParcela(valorTotalParcela);
         paymentDto.setValorTotalEmprestimo(valorTotalEmprestimo);
         paymentMapDto.setIdCard(card);

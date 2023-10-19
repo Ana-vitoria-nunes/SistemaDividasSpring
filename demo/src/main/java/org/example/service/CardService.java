@@ -29,6 +29,8 @@ public class CardService {
 
         String idExterno = cardRequest.getIdexternoCliente();
         Costumer costumer = costumerRepository.findByExternalId(idExterno).orElseThrow(() -> new NoItemException("Cliente não encontrado"));
+
+        newCard.generateAndSetExternalIdCartao();
         newCard.setCostumer(costumer);
         newCard.setCostumer(costumer);
         String s = Pass.hashCVV(cardRequest.getCvv());

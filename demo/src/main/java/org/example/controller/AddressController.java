@@ -43,7 +43,7 @@ public class AddressController {
 
   @PutMapping("/{idAddress}")
   @Transactional()
-  public ResponseEntity updateAddress(@Valid @PathVariable(value = "idAddress" ) Long id, @Valid @RequestBody AddresRequest address){
+  public ResponseEntity updateAddress(@Valid @PathVariable(value = "idAddress" ) String id, @Valid @RequestBody AddresRequest address){
     try {
         addressService.updateAllData(id,address);
          return new ResponseEntity<>(new ResponseDto("Atualizado"),HttpStatus.OK);

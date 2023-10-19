@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 
 @Entity
 @Table(name = "endereço")
@@ -23,6 +25,10 @@ public class Address {
     @Column(name = "id_Endereco")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_Endereco;
+
+    @NotBlank
+    @Column(name = "external_IdAddress",unique = true)
+    private String externalId;
 
     @OneToOne()
     @JoinColumn(nullable = false, name = "id_externoCliente")
@@ -58,4 +64,7 @@ public class Address {
     @Column(nullable = false)
     private String cep;
 
+    public void generateAndSetExternalIdAddress() {
+        this.externalId = UUID.randomUUID().toString();
+    }
 }

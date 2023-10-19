@@ -23,11 +23,12 @@ public class AddressService {
     private final ModelMapper mapper;
 
     public Address salvarEndereço(AddresRequest addresRequestDto) {
-     Costumer costumer = costumerRepository.findById(addresRequestDto.getIdCostumer())
+     Costumer costumer = costumerRepository.findByExternalId(addresRequestDto.getIdCostumer())
             .orElseThrow(() -> new NoItemException("Id do cliente não encontrado"));
 
         Address newAddress = new Address();
 
+        newAddress.generateAndSetExternalIdAddress();
         newAddress.setCostumer(costumer);
         newAddress.setBairro(addresRequestDto.getBairro());
         newAddress.setRuaAvenida(addresRequestDto.getRuaAvenida());
@@ -40,7 +41,7 @@ public class AddressService {
 
     }
     @Transactional()
-    public Address updateAllData(Long id, AddresRequest addresRequest) {
+    public Address updateAllData(String id, AddresRequest addresRequest) {
        Address address = addressRepository.findById(id).orElseThrow(()->
                new NoItemException("Endereço id não encontrado"));
 

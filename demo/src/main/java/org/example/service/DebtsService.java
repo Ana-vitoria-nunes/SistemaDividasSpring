@@ -15,10 +15,11 @@ public class DebtsService {
                 private final CardRepository cardRepository;
                 private final DebtsRepository debtsRepository;
         public Debts save (DebtsRequest debtsRequest){
-                Card card = cardRepository.findById(debtsRequest.getIdCard()).orElseThrow(()->
+                Card card = cardRepository.findByExternalIdCard(debtsRequest.getIdexternoCard()).orElseThrow(()->
                         new NoItemException("Cartão não encontrado"));
 
                 Debts  debtsRequest1 = new Debts();
+                debtsRequest1.generateAndSetExternalIdDebts();
                 debtsRequest1.setIdCard(card);
                 debtsRequest1.setDivida(debtsRequest.getDividas());
                 return debtsRepository.save(debtsRequest1);

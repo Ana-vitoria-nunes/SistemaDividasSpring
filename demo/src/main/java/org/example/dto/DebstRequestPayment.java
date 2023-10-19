@@ -14,8 +14,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class DebstRequestPayment {
     private int escolha;
-    private Long idDebts;
-    private Long idCard;
+    private String idexternoDebts;
+    private String idexternoCard;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate datePaymentChoose;

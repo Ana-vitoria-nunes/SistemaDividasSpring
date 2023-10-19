@@ -1,12 +1,14 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -16,6 +18,10 @@ import java.math.BigDecimal;
 public class Debts {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    @Column(name = "external_IdDebts",unique = true)
+    private String externalId;
 
     @Column(nullable = false)
     //colocar a quantidade de zero a mais
@@ -28,5 +34,8 @@ public class Debts {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_Pagamento")
     private Payment idPayment;
+    public void generateAndSetExternalIdDebts() {
+        this.externalId = UUID.randomUUID().toString();
+    }
 
 }

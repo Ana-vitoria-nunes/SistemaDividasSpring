@@ -2,6 +2,7 @@ package org.example.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "pagamento")
@@ -22,6 +24,10 @@ import java.util.List;
 public class Payment {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    @Column(name = "external_IdPayment",unique = true)
+    private String externalId;
 
     @ManyToOne
     @JoinColumn(name = "id_Card")
@@ -47,4 +53,8 @@ public class Payment {
     @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime dataHoraDivida;
+
+    public void generateAndSetExternalIdPayment() {
+        this.externalId = UUID.randomUUID().toString();
+    }
 }

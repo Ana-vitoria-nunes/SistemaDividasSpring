@@ -4,6 +4,7 @@ package org.example.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "cartao")
@@ -22,8 +24,12 @@ import java.util.List;
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCard")
     private Long id;
 
+    @NotBlank
+    @Column(name = "external_IdCartao",unique = true)
+    private String externalId;
     @OneToOne
     @JoinColumn(name= "id_externoCliente")
     private Costumer costumer;
@@ -50,4 +56,8 @@ public class Card {
 
     @Column(name = "limite_Cartao",nullable = false)
     private BigDecimal limiteCartao;
+
+    public void generateAndSetExternalIdCartao() {
+        this.externalId = UUID.randomUUID().toString();
+    }
 }
