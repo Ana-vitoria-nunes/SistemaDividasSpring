@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.YearMonth;
 
 @Data
@@ -24,7 +25,7 @@ public class CardRequest {
 
     @JsonFormat(pattern = "MM/yyyy")
     @NotNull
-    private YearMonth dataDeValidade;
+    private String dataDeValidade;
 
     @Column(nullable = false)
     private BigDecimal limiteCartao;

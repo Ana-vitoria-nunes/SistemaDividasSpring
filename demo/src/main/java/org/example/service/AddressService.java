@@ -45,7 +45,7 @@ public class AddressService {
                new NoItemException("Endereço id não encontrado"));
 
        Costumer costumer1 = costumerRepository.findById(addresRequest.getIdCostumer()).orElseThrow(() ->
-               new NoItemException("id não encontrado"));
+               new NoItemException("id  não encontrado"));
 
        address.getCostumer();
        address.setNumeroCasa(addresRequest.getNumeroCasa());

@@ -12,6 +12,10 @@ import org.example.repository.CostumerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+
 @Service
 @RequiredArgsConstructor
 public class CardService {
@@ -32,6 +36,7 @@ public class CardService {
         String n = Pass.hashNumeroCartao(cardRequest.getNumeroCartao());
         newCard.setCvv(s);
         newCard.setNumeroCartao(n);
+        dataParseToFormat(cardRequest.getDataDeValidade());
         newCard.setDataDevalidade(cardRequest.getDataDeValidade());
         newCard.setNomeClienteCartao(cardRequest.getNomeClienteCartao());
         newCard.setLimiteCartao(cardRequest.getLimiteCartao());
@@ -39,6 +44,11 @@ public class CardService {
 
         return cardRepository.save(newCard);
     }
+    public LocalDate dataParseToFormat(String dto) {
+        DateTimeFormatter dateFormatOutput = DateTimeFormatter.ofPattern("yyyy-MM");
+        LocalDate dataDeValidade;
 
+      return dataDeValidade = YearMonth.parse(dto,dateFormatOutput).atDay(1);
+    }
 
 }
