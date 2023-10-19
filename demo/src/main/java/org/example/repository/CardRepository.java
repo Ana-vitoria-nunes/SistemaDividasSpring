@@ -10,5 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface CardRepository extends JpaRepository<Card,String> {
-    Optional<Card> findByExternalIdCard(String id_externo);
+    Optional<Card> findByExternalIdCard(String externalIdCard);
 }

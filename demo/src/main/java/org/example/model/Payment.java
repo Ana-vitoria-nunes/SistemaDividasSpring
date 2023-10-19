@@ -26,8 +26,8 @@ public class Payment {
     private Long id;
 
     @NotBlank
-    @Column(name = "external_IdPayment",unique = true)
-    private String externalId;
+    @Column(name = "externalIdPayment",unique = true)
+    private String externalIdPayment;
 
     @ManyToOne
     @JoinColumn(name = "id_Card")
@@ -55,6 +55,6 @@ public class Payment {
     private LocalDateTime dataHoraDivida;
 
     public void generateAndSetExternalIdPayment() {
-        this.externalId = UUID.randomUUID().toString();
+        this.externalIdPayment = UUID.randomUUID().toString();
     }
 }

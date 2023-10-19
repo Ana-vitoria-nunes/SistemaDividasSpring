@@ -20,8 +20,8 @@ public class Debts {
     private Long id;
 
     @NotBlank
-    @Column(name = "external_IdDebts",unique = true)
-    private String externalId;
+    @Column(name = "externalIdDebts",unique = true)
+    private String externalIdDebts;
 
     @Column(nullable = false)
     //colocar a quantidade de zero a mais
@@ -35,7 +35,7 @@ public class Debts {
     @JoinColumn(name = "id_Pagamento")
     private Payment idPayment;
     public void generateAndSetExternalIdDebts() {
-        this.externalId = UUID.randomUUID().toString();
+        this.externalIdDebts = UUID.randomUUID().toString();
     }
 
 }

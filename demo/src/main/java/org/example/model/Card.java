@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -28,8 +29,8 @@ public class Card {
     private Long id;
 
     @NotBlank
-    @Column(name = "external_IdCartao",unique = true)
-    private String externalId;
+    @Column(name = "externalIdCard",unique = true)
+    private String externalIdCard;
     @OneToOne
     @JoinColumn(name= "id_externoCliente")
     private Costumer costumer;
@@ -58,6 +59,6 @@ public class Card {
     private BigDecimal limiteCartao;
 
     public void generateAndSetExternalIdCartao() {
-        this.externalId = UUID.randomUUID().toString();
+        this.externalIdCard = UUID.randomUUID().toString();
     }
 }

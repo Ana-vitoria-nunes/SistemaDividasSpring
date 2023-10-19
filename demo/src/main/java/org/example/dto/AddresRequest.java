@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class AddresRequest {
     //obs: fazer a validação do endereçopara ser real, procurar por cep e aparecer automático tentar pfvr
-    private Long id;
 
     private String idCostumer;
 

@@ -10,5 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface DebtsRepository extends JpaRepository<Debts,String> {
-    Optional<Debts> findByExternalIdDebts(String id_externo);
+    Optional<Debts> findByExternalIdDebts(String externalIdDebts);
 }

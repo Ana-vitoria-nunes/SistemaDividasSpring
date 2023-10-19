@@ -10,5 +10,4 @@ import java.util.Optional;
 
 @Repository
 public interface AddressRepository extends JpaRepository<Address,String> {
-    Optional<Address> findByExternalIdAddress(String id_externo);
 }

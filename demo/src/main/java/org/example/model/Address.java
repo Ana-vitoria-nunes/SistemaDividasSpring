@@ -27,8 +27,8 @@ public class Address {
     private Long id_Endereco;
 
     @NotBlank
-    @Column(name = "external_IdAddress",unique = true)
-    private String externalId;
+    @Column(name = "externalIdAddress",unique = true)
+    private String externalIdAddress;
 
     @OneToOne()
     @JoinColumn(nullable = false, name = "id_externoCliente")
@@ -65,6 +65,6 @@ public class Address {
     private String cep;
 
     public void generateAndSetExternalIdAddress() {
-        this.externalId = UUID.randomUUID().toString();
+        this.externalIdAddress = UUID.randomUUID().toString();
     }
 }

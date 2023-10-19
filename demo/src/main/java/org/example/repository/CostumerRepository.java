@@ -14,5 +14,5 @@ import java.util.UUID;
 @Repository
 public interface CostumerRepository extends JpaRepository<Costumer,String> {
 
-   Optional<Costumer> findByExternalId(String id_externo);
+   Optional<Costumer> findByExternalId(String externalIdCostumer);
 }
