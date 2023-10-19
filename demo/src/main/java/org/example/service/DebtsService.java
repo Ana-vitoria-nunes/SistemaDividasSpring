@@ -2,7 +2,7 @@ package org.example.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.dto.DebtsRequest;
-import org.example.exceção.NoItemException;
+import org.example.excecao.NoItemException;
 import org.example.model.Card;
 import org.example.model.Debts;
 import org.example.repository.CardRepository;

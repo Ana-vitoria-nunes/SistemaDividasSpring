@@ -46,8 +46,6 @@ class DebtsServiceTest {
         Debts newDeb = new Debts();
         when(debtsRepository.save(any(Debts.class))).thenReturn(newDeb);
 
-//        newDeb.setIdCard(card);
-//        newDeb.setDivida(dtoDebts.getDividas());
 
         Debts saved = service.save(dtoDebts);
         Assertions.assertEquals(saved,newDeb);

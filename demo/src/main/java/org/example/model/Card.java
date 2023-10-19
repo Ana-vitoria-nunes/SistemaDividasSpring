@@ -30,7 +30,7 @@ public class    Card {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name= "id_Cliente")
+    @JoinColumn(name= "id_externoCliente")
     private Costumer costumer;
 
     @OneToMany(mappedBy = "idCard")
@@ -45,9 +45,9 @@ public class    Card {
     private String numeroCartao;
 
     @Column(nullable = false,name = "cvv", unique = true)
-    @Min(value = 100, message = "O CVV deve ser um número de 3 dígitos")
-    @Max(value = 999, message = "O CVV deve ser um número de 3 dígitos")
-    private int cvv;
+//    @Min(value = 100, message = "O CVV deve ser um número de 3 dígitos")
+//    @Max(value = 999, message = "O CVV deve ser um número de 3 dígitos")
+    private String cvv;
 
     @JsonFormat(pattern = "MM/yyyy")
     @Column(name = "data_Validade")

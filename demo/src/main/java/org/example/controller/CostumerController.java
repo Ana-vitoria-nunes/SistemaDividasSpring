@@ -37,7 +37,7 @@ public class CostumerController {
         }
     }
     @PutMapping("/{idCostumer}/{escolha}")
-    public ResponseEntity updateCostumer(@PathVariable(value = "idCostumer")Long id,@RequestBody ClienteRequest clienteRequest,@PathVariable(value = "escolha") String escolha){
+    public ResponseEntity updateCostumer(@PathVariable(value = "idCostumer")String id,@RequestBody ClienteRequest clienteRequest,@PathVariable(value = "escolha") String escolha){
         try {
             return new ResponseEntity<>(clienteService.updateCostumer(clienteRequest,id,escolha),HttpStatus.OK);
         }catch (Exception erro){
