@@ -48,7 +48,6 @@ public class Card {
     @JsonFormat(pattern = "yyyy-MM")
     private String dataDevalidade;
 
-    //
     @Column(name = "limite_Cartao",nullable = false)
     private BigDecimal limiteCartao;
 }
