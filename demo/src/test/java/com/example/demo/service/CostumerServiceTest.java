@@ -63,8 +63,21 @@ class CostumerServiceTest {
         Assertions.assertEquals(newEmail,costumer.getEmail());
 
     }
+    @Test
+    @DisplayName("Update telephone costumer´s that return their values modernize")
     void updateCostumerPassword(){
+        ClienteRequest dto = new ClienteRequest(1l,"ana",LocalDate.of( 2003,11,11),"Ana@Gamil.com","123A","81450167039","92159133");
+        Costumer costumer = mapper.map(dto, Costumer.class);
 
+        String newTelephone = "92658736";
+        dto.setTelefone(newTelephone);
+
+        when(costumerRepository.findById(1L)).thenReturn(Optional.of(costumer));
+
+        clienteService.updateCostumer(dto,1L,"Telefone");
+
+        Assertions.assertNotNull(costumer);
+        Assertions.assertEquals(newTelephone,costumer.getTelefone());
     }
 
 

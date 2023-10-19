@@ -40,8 +40,10 @@ public class AddressController {
       return new ResponseEntity<>(erro.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
+
   @PutMapping("/{idAddress}")
-  public ResponseEntity updateAddress(@PathVariable Long id, @RequestBody AddresRequest address){
+  @Transactional()
+  public ResponseEntity updateAddress(@Valid @PathVariable(value = "idAddress" ) Long id, @Valid @RequestBody AddresRequest address){
     try {
         addressService.updateAllData(id,address);
          return new ResponseEntity<>(new ResponseDto("Atualizado"),HttpStatus.OK);

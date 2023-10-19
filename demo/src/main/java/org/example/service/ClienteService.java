@@ -10,6 +10,7 @@ import org.example.model.Costumer;
 import org.example.repository.CostumerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -19,18 +20,17 @@ public class ClienteService {
         // adicionar cliente OK
         // alterar senha, email, endereço OK
         // colocar um método para confirmar dados que retorna os os dados inseridos (GET)
-        // refatorar para ingles
+        // refatorar para ingles OK
         // criar método para logar
 
     private final CostumerRepository costumerRepository;
+    private final PasswordEncoder encoder;
     private final ModelMapper mapper;
-    //private final PasswordEncoderServiceRepository passwordEncoderService;
-   // private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public Costumer saveCostumer (@Valid ClienteRequest dtoCliente) {
+
+    public Costumer saveCostumer (ClienteRequest dtoCliente) {
         Costumer costumer = mapper.map(dtoCliente, Costumer.class);
-      //  String senhaCriptografada = passwordEncoderService.encodePassword(dtoCliente.getSenha(), bCryptPasswordEncoder);
-        costumer.setSenha(dtoCliente.getSenha());
+        costumer.setSenha(encoder.encode(dtoCliente.getSenha()));
         costumerRepository.save(costumer);
         return costumer;
     }
@@ -47,6 +47,7 @@ public class ClienteService {
             newCostumer.setSenha(clienteRequest.getSenha());
             return costumerRepository.save(newCostumer);
         }else if (escolha.equals("Telefone")){
+            newCostumer.setTelefone(clienteRequest.getTelefone());
             return costumerRepository.save(newCostumer);
         }else {
             return null;
