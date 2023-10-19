@@ -42,10 +42,10 @@ public class AddressService {
     }
     @Transactional()
     public Address updateAllData(String id, AddresRequest addresRequest) {
-       Address address = addressRepository.findById(id).orElseThrow(()->
+       Address address = addressRepository.findByExternalIdAddress(id).orElseThrow(()->
                new NoItemException("Endereço id não encontrado"));
 
-       Costumer costumer1 = costumerRepository.findById(addresRequest.getIdCostumer()).orElseThrow(() ->
+       Costumer costumer1 = costumerRepository.findByExternalId(addresRequest.getIdCostumer()).orElseThrow(() ->
                new NoItemException("id  não encontrado"));
 
        address.getCostumer();

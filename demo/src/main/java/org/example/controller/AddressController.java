@@ -45,7 +45,7 @@ public class AddressController {
   @Transactional()
   public ResponseEntity updateAddress(@Valid @PathVariable(value = "idAddress" ) String id, @Valid @RequestBody AddresRequest address){
     try {
-        addressService.updateAllData(id,address);
+          addressService.updateAllData(id,address);
          return new ResponseEntity<>(new ResponseDto("Atualizado"),HttpStatus.OK);
      }catch (Exception erro){
       return new ResponseEntity<>(erro.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
