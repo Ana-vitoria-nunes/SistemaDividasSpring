@@ -1,4 +1,4 @@
-package org.example.exceção;
+package org.example.excecao;
 
 import lombok.Data;
 

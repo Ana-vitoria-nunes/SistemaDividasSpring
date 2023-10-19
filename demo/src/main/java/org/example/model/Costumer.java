@@ -13,6 +13,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "cliente")
@@ -27,6 +28,10 @@ public class Costumer {
         @Column(name = "id_Cliente")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id_Cliente;
+
+        @NotBlank
+        @Column(name = "id_externo",unique = true)
+        private String id_externo;
 
         @Column(nullable = false, length = 250, unique = true)
         @NotBlank
@@ -51,6 +56,10 @@ public class Costumer {
         @Column(nullable = false, length = 15, unique = true)
         @Pattern(regexp = "^[0-9 ]*$", message = "O telefone permite apenas números")
         private String telefone;
+
+        public void generateAndSetExternalId() {
+                this.id_externo = UUID.randomUUID().toString();
+        }
 
 
 }

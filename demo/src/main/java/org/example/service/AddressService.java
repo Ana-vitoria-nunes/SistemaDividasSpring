@@ -1,9 +1,8 @@
 package org.example.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.dto.AddresRequest;
-import org.example.exceção.NoItemException;
+import org.example.excecao.NoItemException;
 import org.example.model.Address;
 import org.example.model.Costumer;
 import org.example.repository.AddressRepository;

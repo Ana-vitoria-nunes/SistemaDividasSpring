@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.dto.DebstRequestPayment;
 import org.example.dto.PaymentDto;
 import org.example.dto.ResponseDto;
-import org.example.exceção.NoItemException;
+import org.example.excecao.NoItemException;
 import org.example.model.Card;
 import org.example.model.Debts;
 import org.example.model.Payment;

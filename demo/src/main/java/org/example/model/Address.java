@@ -25,7 +25,7 @@ public class Address {
     private Long id_Endereco;
 
     @OneToOne()
-    @JoinColumn(nullable = false, name = "id_Cliente")
+    @JoinColumn(nullable = false, name = "id_externoCliente")
     @NotNull
     private Costumer costumer;
 

@@ -30,7 +30,7 @@ public class    Card {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name= "id_Cliente")
+    @JoinColumn(name= "id_externoCliente")
     private Costumer costumer;
 
     @OneToMany(mappedBy = "idCard")

@@ -18,7 +18,7 @@ import java.time.YearMonth;
 public class CardRequest {
 
     private Long id;
-    private long idCostumer;
+    private String idexternoCliente;
     private String nomeClienteCartao;
     private String numeroCartao;
     private int cvv;
