@@ -47,7 +47,7 @@ public class    Card {
     @Column(nullable = false,name = "cvv", unique = true)
 //    @Min(value = 100, message = "O CVV deve ser um número de 3 dígitos")
 //    @Max(value = 999, message = "O CVV deve ser um número de 3 dígitos")
-    private Integer cvv;
+    private String cvv;
 
     @JsonFormat(pattern = "MM/yyyy")
     @Column(name = "data_Validade")

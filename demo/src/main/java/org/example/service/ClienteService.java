@@ -4,11 +4,13 @@ package org.example.service;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.config.Pass;
 import org.example.dto.ClienteRequest;
 import org.example.excecao.NoItemException;
 import org.example.model.Costumer;
 import org.example.repository.CostumerRepository;
 import org.modelmapper.ModelMapper;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -26,18 +28,22 @@ public class ClienteService {
 
     private final CostumerRepository costumerRepository;
     private final ModelMapper mapper;
-    //private final PasswordEncoderServiceRepository passwordEncoderService;
+  //  private final PasswordEncoderServiceRepository passwordEncoderService;
     // private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 //    public void generateAndSetExternalId(Costumer ) {
 //        this.externalId = UUID.randomUUID().toString();
 //    }
+//    private final PasswordEncoder pass;
 
     public Costumer saveCostumer(@Valid ClienteRequest dtoCliente) {
         Costumer costumer = mapper.map(dtoCliente, Costumer.class);
         //  String senhaCriptografada = passwordEncoderService.encodePassword(dtoCliente.getSenha(), bCryptPasswordEncoder);
+        // costumer.setSenha(pass.encode(dtoCliente.getSenha()));
 
-        costumer.setSenha(dtoCliente.getSenha());
+
+        String s = Pass.hashPassword(dtoCliente.getSenha());
+        costumer.setSenha(s);
         costumer.generateAndSetExternalId();
         costumerRepository.save(costumer);
         return costumer;

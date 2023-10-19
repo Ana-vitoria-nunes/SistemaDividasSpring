@@ -2,6 +2,7 @@ package org.example.service;
 
 
 import lombok.RequiredArgsConstructor;
+import org.example.config.Pass;
 import org.example.dto.CardRequest;
 import org.example.excecao.NoItemException;
 import org.example.model.Card;
@@ -25,12 +26,14 @@ public class CardService {
         String idExterno = cardRequest.getIdexternoCliente();
         Costumer costumer = costumerRepository.findByExternalId(idExterno).orElseThrow(() -> new NoItemException("Cliente não encontrado"));
         newCard.setCostumer(costumer);
-       // newCard.setPagamento(cardRequest.get);
 
 //        newCard.setCostumer(costumer);
+      //  int s = Pass.hashPassword(cardRequest.getCvv());
+
+      //  newCard.setCvv(s);
         newCard.setDataDevalidade(cardRequest.getDataDeValidade());
         newCard.setNomeClienteCartao(cardRequest.getNomeClienteCartao());
-        newCard.setCvv(cardRequest.getCvv());
+     //   newCard.setCvv(cardRequest.getCvv());
         newCard.setLimiteCartao(cardRequest.getLimiteCartao());
         newCard.setNumeroCartao(cardRequest.getNumeroCartao());
 
