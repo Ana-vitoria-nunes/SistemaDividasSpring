@@ -20,27 +20,25 @@ public class CardService {
     private final ModelMapper mapper;
 
     // colocar um método para confirmar dados
-    public Card saveCard (CardRequest cardRequest){
+    public Card saveCard(CardRequest cardRequest) {
         Card newCard = new Card();
 
         String idExterno = cardRequest.getIdexternoCliente();
         Costumer costumer = costumerRepository.findByExternalId(idExterno).orElseThrow(() -> new NoItemException("Cliente não encontrado"));
         newCard.setCostumer(costumer);
 
-//        newCard.setCostumer(costumer);
-      //  int s = Pass.hashPassword(cardRequest.getCvv());
-
-      //  newCard.setCvv(s);
+        newCard.setCostumer(costumer);
+        String s = Pass.hashCVV(cardRequest.getCvv());
+        String n = Pass.hashNumeroCartao(cardRequest.getNumeroCartao());
+        newCard.setCvv(s);
+        newCard.setNumeroCartao(n);
         newCard.setDataDevalidade(cardRequest.getDataDeValidade());
         newCard.setNomeClienteCartao(cardRequest.getNomeClienteCartao());
-     //   newCard.setCvv(cardRequest.getCvv());
         newCard.setLimiteCartao(cardRequest.getLimiteCartao());
-        newCard.setNumeroCartao(cardRequest.getNumeroCartao());
 
-       return cardRepository.save(newCard);
+
+        return cardRepository.save(newCard);
     }
-
-
 
 
 }

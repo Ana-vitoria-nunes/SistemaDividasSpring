@@ -8,6 +8,9 @@ public class Pass {
     public static String hashCVV(Integer cvv) {
         return BCrypt.hashpw(String.valueOf(cvv), BCrypt.gensalt());
     }
+    public static String hashNumeroCartao(String number) {
+        return BCrypt.hashpw(number, BCrypt.gensalt());
+    }
 
 }
 
