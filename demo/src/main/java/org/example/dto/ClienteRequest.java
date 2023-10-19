@@ -17,7 +17,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ClienteRequest {
 
-    Long id;
     @NotBlank
     String nomeCompleto;
 

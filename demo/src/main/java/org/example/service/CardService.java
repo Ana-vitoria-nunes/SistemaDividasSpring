@@ -23,13 +23,14 @@ public class CardService {
         Card newCard = new Card();
 
         String idExterno = cardRequest.getIdexternoCliente();
-        Costumer costumer = costumerRepository.findByExternalId(idExterno).orElseThrow(
-                () -> new NoItemException("Cliente não encontrado")
-        );
+        Costumer costumer = costumerRepository.findByExternalId(idExterno).orElseThrow(() -> new NoItemException("Cliente não encontrado"));
         newCard.setCostumer(costumer);
        // newCard.setPagamento(cardRequest.get);
+
+//        newCard.setCostumer(costumer);
         newCard.setDataDevalidade(cardRequest.getDataDeValidade());
         newCard.setNomeClienteCartao(cardRequest.getNomeClienteCartao());
+        newCard.setCvv(cardRequest.getCvv());
         newCard.setLimiteCartao(cardRequest.getLimiteCartao());
         newCard.setNumeroCartao(cardRequest.getNumeroCartao());
 

@@ -11,6 +11,9 @@ import org.example.repository.CostumerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 
 @Service
 @RequiredArgsConstructor
@@ -26,9 +29,14 @@ public class ClienteService {
     //private final PasswordEncoderServiceRepository passwordEncoderService;
     // private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+//    public void generateAndSetExternalId(Costumer ) {
+//        this.externalId = UUID.randomUUID().toString();
+//    }
+
     public Costumer saveCostumer(@Valid ClienteRequest dtoCliente) {
         Costumer costumer = mapper.map(dtoCliente, Costumer.class);
         //  String senhaCriptografada = passwordEncoderService.encodePassword(dtoCliente.getSenha(), bCryptPasswordEncoder);
+
         costumer.setSenha(dtoCliente.getSenha());
         costumer.generateAndSetExternalId();
         costumerRepository.save(costumer);
@@ -36,9 +44,9 @@ public class ClienteService {
     }
 
     @Transactional
-    public Costumer updateCostumer(ClienteRequest clienteRequest, Long id, String escolha) {
-        Costumer newCostumer = costumerRepository.findById(id)
-                .orElseThrow(() -> new NoItemException("Id do cliente não encontrado"));
+    public Costumer updateCostumer(ClienteRequest clienteRequest, String id, String escolha) {
+       Costumer newCostumer = costumerRepository.findByExternalId(id)
+               .orElseThrow(() -> new NoItemException("Id do cliente não encontrado"));
 
         if (escolha.equals("Email")) {
             newCostumer.setEmail(clienteRequest.getEmail());
@@ -52,6 +60,14 @@ public class ClienteService {
             return null;
         }
     }
+//    public Costumer findCustomerByExternalId(String externalId) {
+//        Optional<Costumer> customer = costumerRepository.findByExternalId(externalId);
+//        if (customer.isPresent()) {
+//            return customer.get();
+//        } else {
+//            throw new NoItemException("Cliente não encontrado");
+//        }
+//    }
 //    public void getAllAddress(Lis){
 //
 //

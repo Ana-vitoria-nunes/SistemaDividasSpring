@@ -30,8 +30,8 @@ public class Costumer {
         private Long id_Cliente;
 
         @NotBlank
-        @Column(name = "id_externo",unique = true)
-        private String id_externo;
+        @Column(name = "external_Id",unique = true)
+        private String externalId;
 
         @Column(nullable = false, length = 250, unique = true)
         @NotBlank
@@ -58,7 +58,7 @@ public class Costumer {
         private String telefone;
 
         public void generateAndSetExternalId() {
-                this.id_externo = UUID.randomUUID().toString();
+              this.externalId = UUID.randomUUID().toString();
         }
 
 

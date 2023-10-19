@@ -17,7 +17,7 @@ public class AddresRequest {
     //obs: fazer a validação do endereçopara ser real, procurar por cep e aparecer automático tentar pfvr
     private Long id;
 
-    private Long idCostumer;
+    private String idCostumer;
 
     @NotBlank
     private String bairro;

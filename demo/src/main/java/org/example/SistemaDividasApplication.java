@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 //(exclude = {SecurityAutoConfiguration.class})
 @SpringBootApplication
-@ComponentScan(basePackages = "org.example")
+//@ComponentScan(basePackages = "org.example")
 public class SistemaDividasApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaDividasApplication.class, args);

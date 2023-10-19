@@ -17,7 +17,6 @@ import java.time.YearMonth;
 @NoArgsConstructor
 public class CardRequest {
 
-    private Long id;
     private String idexternoCliente;
     private String nomeClienteCartao;
     private String numeroCartao;
