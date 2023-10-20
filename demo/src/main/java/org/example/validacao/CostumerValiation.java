@@ -2,7 +2,7 @@ package org.example.validacao;
 
 public class CostumerValiation {
     //validar que senha pode ser igual a das outras pessoas
-    // retornar uma mensagem
+    // retornar uma mensagem OK
     // Tratar costumer OK
     // Card OK
     //AddressController OK
@@ -13,4 +13,13 @@ public class CostumerValiation {
     //tratar o nullo do adressService
     //Refatorar o id do endereço para ele não reeceber um path
     // O método put não retorna a mensagem especifica alterar
+    // adicionar cliente OK
+    // alterar senha, email, endereço OK
+    // colocar um método para confirmar dados que retorna os os dados inseridos (GET)
+    // refatorar para ingles
+    // criar método para logar
+
+
+
+
 }

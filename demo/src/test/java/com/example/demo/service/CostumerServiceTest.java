@@ -1,23 +1,13 @@
 package com.example.demo.service;
 
-import org.example.dto.ClienteRequest;
-import org.example.model.Costumer;
-import org.example.repository.CostumerRepository;
-import org.example.service.ClienteService;
-import org.junit.jupiter.api.Assertions;
+import org.example.core.port.CostumerRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
-import static org.mockito.Mockito.*;
 
 import org.springframework.test.context.ActiveProfiles;
-
-import java.time.LocalDate;
-import java.util.Optional;
 
 
 @ActiveProfiles("test")
