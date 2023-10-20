@@ -1,5 +1,6 @@
 package org.example.core.useCase.address;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.core.domain.model.dto.AddresRequest;
 import org.example.core.domain.excecao.NoItemException;
@@ -7,6 +8,7 @@ import org.example.core.domain.model.Address;
 import org.example.core.domain.model.Costumer;
 import org.example.core.port.AddressRepository;
 import org.example.core.port.CostumerRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
@@ -32,5 +34,11 @@ public class SaveAddressUseCase {
 
         return addressRepository.save(newAddress);
     }
+
+
+
+
+
+
 
 }

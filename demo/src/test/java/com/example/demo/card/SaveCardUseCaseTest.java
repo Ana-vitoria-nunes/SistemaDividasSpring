@@ -14,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -36,11 +38,20 @@ class SaveCardUseCaseTest {
         Costumer costumer = new Costumer();
         costumer.setExternalId("19j");
 
+        String data = "05/2024";
+
+
         when(costumerRepository.findByExternalId("19j")).thenReturn(Optional.of(costumer));
-        CardRequest cardRequest = new CardRequest("19j","Ana Nunes","1234567899874561",456,"05/2024", BigDecimal.valueOf(1500));
+        CardRequest cardRequest = new CardRequest("19j","Ana Nunes","1234567899874561",456,data, BigDecimal.valueOf(1500));
+
+        cardUseCase.dataParseToFormat(cardRequest.getDataDeValidade());
 
         Card card = new Card();
+        card.setDataDevalidade(data);
+
+        cardUseCase.dataParseToFormat(card.getDataDevalidade());
         when(cardRepository.save(any(Card.class))).thenReturn(card);
+
 
         Card saved = cardUseCase.saveCard(cardRequest);
         Assertions.assertEquals(saved,card);

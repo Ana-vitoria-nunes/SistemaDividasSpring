@@ -51,7 +51,7 @@ public class Card {
     private String cvv;
 
     @Column(name = "data_Validade")
-    @JsonFormat(pattern = "yyyy-MM")
+    @JsonFormat(pattern = "MM/yyyy")
     private String dataDevalidade;
 
     @Column(name = "limite_Cartao",nullable = false)

@@ -1,5 +1,6 @@
 package com.example.demo.costmer;
 
+import org.example.adapters.config.Pass;
 import org.example.core.domain.model.Costumer;
 import org.example.core.domain.model.dto.ClienteRequest;
 import org.example.core.port.CostumerRepository;
@@ -30,19 +31,37 @@ class SaveCostumerUseCaseTest {
 
     @InjectMocks
     SaveCostumerUseCase saveCostumerUseCase;
-    private ModelMapper mapper = new ModelMapper();
+
+    @BeforeEach
+    public void setUp(){
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     @DisplayName("Method to create a new costumer and should return costumer created")
     void saveCostumer() {
-        ClienteRequest dto = new ClienteRequest("ana", LocalDate.of( 2003,11,11),"Ana@Gamil.com","123A","81450167039","92159133");
-        Costumer costumer = mapper.map(dto, Costumer.class);
 
 
-        when(costumerRepository.save(any(Costumer.class))).thenReturn(costumer);
-        Costumer costumerSaved = costumerRepository.save(costumer);
+        ClienteRequest dto = new ClienteRequest("ana", LocalDate.of(2004, 12, 20), "Ana@Gamil.com", "123", "81450167039", "3456787654");
 
-        Assertions.assertNotNull(costumerSaved);
+        Costumer costumer = new Costumer();
+
+        String s = Pass.hashPassword(dto.getSenha());
+
+        dto.setSenha(s);
+        costumer.setSenha(dto.getSenha());
+        costumer.generateAndSetExternalId();
+        costumer.setId_Cliente(1l);
+        costumer.setSenha(dto.getSenha());
+        costumer.setEmail(dto.getEmail());
+        costumer.setCpf(dto.getCpf());
+        costumer.setNome(dto.getNomeCompleto());
+        costumer.setDataNascimento(dto.getDataNascimento());
+        costumer.setTelefone(dto.getTelefone());
+
+        Costumer costumer1 = saveCostumerUseCase.saveCostumer(dto);
+
+        Assertions.assertNotNull(costumer);
+        Assertions.assertEquals(costumer,costumer1);
     }
-
-}
+    }

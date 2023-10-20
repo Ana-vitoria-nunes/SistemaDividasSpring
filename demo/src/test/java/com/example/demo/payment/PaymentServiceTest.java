@@ -17,6 +17,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
 import static org.mockito.ArgumentMatchers.any;
@@ -44,6 +46,7 @@ class PaymentServiceTest {
 
         Debts debts = new Debts();
         debts.setExternalIdDebts("13p");
+        debts.setDivida(new BigDecimal(10.000));
 
         when(debtsRepository.findByExternalIdDebts("13p")).thenReturn(Optional.of(debts));
         when(cardRepository.findByExternalIdCard("23p")).thenReturn(Optional.of(card));

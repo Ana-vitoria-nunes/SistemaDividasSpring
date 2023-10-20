@@ -1,7 +1,11 @@
 package org.example.adapters.web;
 
+import jakarta.transaction.Transactional;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.core.domain.excecao.ApplicationAdviceController;
 import org.example.core.useCase.costumer.SaveCostumerUseCase;
 import org.example.core.domain.model.dto.ClienteRequest;
 import org.example.core.domain.model.dto.ResponseDto;
@@ -9,6 +13,8 @@ import org.example.core.useCase.costumer.UpdateCostumerUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 
 @RestController()
@@ -20,7 +26,7 @@ public class CostumerController {
     //tratar excesão do erro de cpf
     // tratar exesão que senha pode ser repetida
 
-    @PostMapping
+    @PostMapping @Transactional()
     public ResponseEntity addUser(@Valid @RequestBody ClienteRequest cliente) {
         try {
             saveCostumer.saveCostumer(cliente);

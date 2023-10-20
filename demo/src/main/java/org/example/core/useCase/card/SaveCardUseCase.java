@@ -49,7 +49,7 @@ public class SaveCardUseCase {
     }
 
     public LocalDate dataParseToFormat(String dto) {
-        DateTimeFormatter dateFormatOutput = DateTimeFormatter.ofPattern("yyyy-MM");
+        DateTimeFormatter dateFormatOutput = DateTimeFormatter.ofPattern("MM/yyyy");
 
         return YearMonth.parse(dto, dateFormatOutput).atDay(1);
     } // -> método em uma controladora
