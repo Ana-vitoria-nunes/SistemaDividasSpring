@@ -8,21 +8,21 @@ import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 
 import org.springframework.test.context.ActiveProfiles;
-
-
-@ActiveProfiles("test")
-class CostumerServiceTest {
-    @Mock
-    private CostumerRepository costumerRepository;
-
-    @InjectMocks
-    ClienteService clienteService;
-    private ModelMapper mapper = new ModelMapper();
-
-    @BeforeEach
-    private void setUp(){
-        MockitoAnnotations.initMocks(this);
-    }
+//
+//
+//@ActiveProfiles("test")
+//class CostumerServiceTest {
+//    @Mock
+//    private CostumerRepository costumerRepository;
+//
+//    @InjectMocks
+//    ClienteService clienteService;
+//    private ModelMapper mapper = new ModelMapper();
+//
+//    @BeforeEach
+//    private void setUp(){
+//        MockitoAnnotations.initMocks(this);
+//    }
 //    @Test
 //    @DisplayName("Method to create a new costumer and should return costumer created")
 //    void saveCostumer() {
@@ -72,4 +72,4 @@ class CostumerServiceTest {
 
 
 
-}
+//}

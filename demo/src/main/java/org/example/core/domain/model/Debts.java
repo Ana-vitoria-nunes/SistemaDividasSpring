@@ -31,9 +31,9 @@ public class Debts {
     @JoinColumn(name = "externalIdCard")
     private Card externalIdCard;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "externalIdPayment")
-//    private Payment externalIdPayment;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "externalIdPayment")
+    private Payment externalIdPayment;
 
     public void generateAndSetExternalIdDebts() {
         this.externalIdDebts = UUID.randomUUID().toString();

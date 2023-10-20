@@ -6,7 +6,9 @@ import org.example.core.domain.model.dto.ClienteRequest;
 import org.example.core.domain.model.Costumer;
 import org.example.core.port.CostumerRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class SaveCostumerUseCase {
     //  private final PasswordEncoderServiceRepository passwordEncoderService;

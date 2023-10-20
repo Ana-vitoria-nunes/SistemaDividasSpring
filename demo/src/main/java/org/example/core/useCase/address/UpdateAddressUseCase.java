@@ -8,7 +8,9 @@ import org.example.core.domain.model.Address;
 import org.example.core.domain.model.Costumer;
 import org.example.core.port.AddressRepository;
 import org.example.core.port.CostumerRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class UpdateAddressUseCase {
 

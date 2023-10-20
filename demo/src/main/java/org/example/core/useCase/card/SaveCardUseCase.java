@@ -10,6 +10,7 @@ import org.example.core.domain.model.Costumer;
 import org.example.core.port.CardRepository;
 import org.example.core.port.CostumerRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 
 @Service
+@Component
 @RequiredArgsConstructor
 public class SaveCardUseCase {
     private final CardRepository cardRepository;

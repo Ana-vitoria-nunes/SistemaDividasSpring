@@ -7,9 +7,11 @@ import org.example.core.domain.model.Card;
 import org.example.core.domain.model.Debts;
 import org.example.core.port.CardRepository;
 import org.example.core.port.DebtsRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
+@Component
 @RequiredArgsConstructor
 public class SaveDebtsUseCase {
                 private final CardRepository cardRepository;
