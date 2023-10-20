@@ -47,10 +47,12 @@ public class SaveCardUseCase {
 
         return cardRepository.save(newCard);
     }
+
     public LocalDate dataParseToFormat(String dto) {
         DateTimeFormatter dateFormatOutput = DateTimeFormatter.ofPattern("yyyy-MM");
-        LocalDate dataDeValidade;
 
-      return dataDeValidade = YearMonth.parse(dto,dateFormatOutput).atDay(1);
+        return YearMonth.parse(dto, dateFormatOutput).atDay(1);
     } // -> método em uma controladora
+
+
 }
