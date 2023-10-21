@@ -23,12 +23,11 @@ public class Debts {
     @Column(name = "externalIdDebts",unique = true)
     private String externalIdDebts;
 
-    @Column(nullable = false)
-    //colocar a quantidade de zero a mais
+    @Column(nullable = false, unique = true)
     private BigDecimal debts;
 
     @ManyToOne()
-    @JoinColumn(name = "externalIdCard")
+    @JoinColumn(name = "externalIdCard",unique = true)
     private Card externalIdCard;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -17,13 +17,13 @@ public class UpdateAddressUseCase {
     private final AddressRepository addressRepository;
     private final CostumerRepository costumerRepository;
 
-    @Transactional()
+    @Transactional(Transactional.TxType.REQUIRED)
     public Address updateAllData(String id, AddresRequest addresRequest) {
         Address address = addressRepository.findByExternalIdAddress(id).orElseThrow(()->
                 new NoItemException("Endereço id não encontrado"));
 
         Costumer costumer1 = costumerRepository.findByExternalId(addresRequest.getIdCostumer()).orElseThrow(() ->
-                new NoItemException("id  não encontrado"));
+                new NoItemException("id do Cliente não encontrado"));
 
         address.getCostumer();
         address.setNumberHouse(addresRequest.getNumeroCasa());

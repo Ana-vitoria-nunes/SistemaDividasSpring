@@ -2,7 +2,7 @@ package com.example.demo.costmer;
 
 import org.example.adapters.config.Pass;
 import org.example.core.domain.model.Costumer;
-import org.example.core.domain.model.dto.ClienteRequest;
+import org.example.core.domain.model.dto.CostumerRequest;
 import org.example.core.port.CostumerRepository;
 import org.example.core.useCase.costumer.SaveCostumerUseCase;
 import org.junit.jupiter.api.Assertions;
@@ -14,14 +14,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.modelmapper.ModelMapper;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
@@ -42,22 +39,22 @@ class SaveCostumerUseCaseTest {
     void saveCostumer() {
 
 
-        ClienteRequest dto = new ClienteRequest("ana", LocalDate.of(2004, 12, 20), "Ana@Gamil.com", "123", "81450167039", "3456787654");
+        CostumerRequest dto = new CostumerRequest("ana", LocalDate.of(2004, 12, 20), "Ana@Gamil.com", "123", "81450167039", "3456787654");
 
         Costumer costumer = new Costumer();
 
         String s = Pass.hashPassword(dto.getSenha());
 
         dto.setSenha(s);
-        costumer.setSenha(dto.getSenha());
+        costumer.setPassword(dto.getSenha());
         costumer.generateAndSetExternalId();
         costumer.setId_Cliente(1l);
-        costumer.setSenha(dto.getSenha());
+        costumer.setPassword(dto.getSenha());
         costumer.setEmail(dto.getEmail());
         costumer.setCpf(dto.getCpf());
-        costumer.setNome(dto.getNomeCompleto());
-        costumer.setDataNascimento(dto.getDataNascimento());
-        costumer.setTelefone(dto.getTelefone());
+        costumer.setName(dto.getNomeCompleto());
+        costumer.setBirthDate(dto.getDataNascimento());
+        costumer.setPhone(dto.getTelefone());
 
         Costumer costumer1 = saveCostumerUseCase.saveCostumer(dto);
 

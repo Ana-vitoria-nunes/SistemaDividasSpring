@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.br.CPF;
+
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -43,13 +43,14 @@ public class Costumer {
         private String email;
 
         @Column(nullable = false,unique = true)
+        @NotBlank(message = "O campo senha não pode ser nulo")
         private String password;
 
         @JsonFormat(pattern = "dd/MM/yyyy")
         @Column(name = "data_Nascimento")
         private LocalDate birthDate ;
 
-        @CPF
+
         @Column(nullable = false, unique = true) // -> tratar cpf
         private String cpf;
 

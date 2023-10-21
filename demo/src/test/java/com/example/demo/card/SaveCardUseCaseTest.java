@@ -47,9 +47,9 @@ class SaveCardUseCaseTest {
         cardUseCase.dataParseToFormat(cardRequest.getDataDeValidade());
 
         Card card = new Card();
-        card.setDataDevalidade(data);
+        card.setExpiryDate(data);
 
-        cardUseCase.dataParseToFormat(card.getDataDevalidade());
+        cardUseCase.dataParseToFormat(card.getExpiryDate());
         when(cardRepository.save(any(Card.class))).thenReturn(card);
 
 

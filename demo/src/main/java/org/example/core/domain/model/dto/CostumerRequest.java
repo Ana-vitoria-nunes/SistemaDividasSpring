@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClienteRequest {
+public class CostumerRequest {
 
     @NotBlank
     String nomeCompleto;
@@ -28,7 +28,7 @@ public class ClienteRequest {
     @NotBlank
     String email;
 
-    @NotBlank
+    @NotBlank(message = "O campo senha não pode ser nulo")
     String senha;
 
     @CPF

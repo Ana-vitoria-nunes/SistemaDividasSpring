@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class DebstRequestPayment {
     private int escolha;
+
     private String idexternoDebts;
     private String idexternoCard;
 

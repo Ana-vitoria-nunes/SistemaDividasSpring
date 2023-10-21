@@ -4,6 +4,8 @@ package org.example.core.domain.model.dto;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,19 +20,21 @@ public class AddresRequest {
 
     private String idCostumer;
 
-    @NotBlank
+    @NotBlank(message = "O bairro não pode estar em branco")
     private String bairro;
 
-    @NotBlank
+    @NotBlank(message = "A rua não pode estar em branco")
     private String ruaAvenida;
 
     @Column(nullable = false, name = "numero_Casa")
+    @NotNull(message = "Numero da casa não pode estar em branco")
     private Integer numeroCasa;
 
-    @NotBlank
+    @NotBlank(message = "Estado não pode estar em branco")
     private String estado;
 
-    @NotBlank
+    @NotBlank(message = "Cidade não pode estar em branco")
+    @Pattern(regexp = "^[a-zA-Z ]*$", message = "O campo cidade permite apenas letras ")
     private String cidade;
 
     @NotBlank

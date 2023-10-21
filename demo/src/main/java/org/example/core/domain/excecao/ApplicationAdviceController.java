@@ -5,8 +5,11 @@ import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.example.core.domain.model.dto.ResponseDto;
 import org.springframework.core.codec.DecodingException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -18,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Component
 @RestControllerAdvice
 @RequiredArgsConstructor
 public class ApplicationAdviceController extends ResponseEntityExceptionHandler {
@@ -31,43 +35,12 @@ public class ApplicationAdviceController extends ResponseEntityExceptionHandler 
         return new ResponseDto(errorMessages);
     }
 
-    @ExceptionHandler(DecodingException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseDto handlerHttpMessageNotReadableException(DecodingException exception){
-        return new ResponseDto(exception.getMessage());
-    }
-
-
-
-    @ExceptionHandler(DuplicateKeyException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseDto handlerDuplicateKeyException(DuplicateKeyException erro){
-        return new ResponseDto(erro.getMessage());
-    }
-
-    @ExceptionHandler(UnexpectedRollbackException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseDto handleUnexpectedRollbackException(UnexpectedRollbackException ex) {
-        return new ResponseDto(ex.getMessage());
-    }
-
-
 }
 
 
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ResponseBody
-//    public ErrorResponse handlerMethodArgumentNotValidException(MethodArgumentNotValidException erro){
-//        return new ErrorResponse(erro.getBindingResult());
-//    }
 
 
-//    @ExceptionHandler(WebExchangeBindException.class)
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    public ResponseDto handlerWebExchangeBindException(WebExchangeBindException exception){
-//        return new ResponseDto(exception.getMessage());
-//    }
+
 
 
 

@@ -46,7 +46,7 @@ class PaymentServiceTest {
 
         Debts debts = new Debts();
         debts.setExternalIdDebts("13p");
-        debts.setDivida(new BigDecimal(10.000));
+        debts.setDebts(new BigDecimal(10.000));
 
         when(debtsRepository.findByExternalIdDebts("13p")).thenReturn(Optional.of(debts));
         when(cardRepository.findByExternalIdCard("23p")).thenReturn(Optional.of(card));
