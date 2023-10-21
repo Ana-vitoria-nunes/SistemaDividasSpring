@@ -64,26 +64,26 @@ public class PaymentService {
             }
             default -> new ResponseDto("Opção inválida, tente novamente");
         }
-        BigDecimal valorTotalEmprestimo = debts.getDivida().multiply(BigDecimal.ONE.add(BigDecimal.valueOf(juros)));
+        BigDecimal valorTotalEmprestimo = debts.getDebts().multiply(BigDecimal.ONE.add(BigDecimal.valueOf(juros)));
         BigDecimal valorTotalParcela = valorTotalEmprestimo.divide(BigDecimal.valueOf(parcela), 2, BigDecimal.ROUND_HALF_UP);
 
         paymentMapDto.generateAndSetExternalIdPayment();
         paymentDto.setValorTotalParcela(valorTotalParcela);
         paymentDto.setValorTotalEmprestimo(valorTotalEmprestimo);
         paymentMapDto.setExternalIdCard(card);
-        paymentMapDto.setValorTotalEmprestimo(paymentDto.getValorTotalEmprestimo());
-        paymentMapDto.setValorTotalParcela(paymentDto.getValorTotalParcela());
+        paymentMapDto.setTotalLending(paymentDto.getValorTotalEmprestimo());
+        paymentMapDto.setTotalQuota(paymentDto.getValorTotalParcela());
 
-        paymentMapDto.setDataHoraDivida(paymentMapDto.getDataHoraDivida());
+        paymentMapDto.setDayDebts(paymentMapDto.getDayDebts());
 
 
         LocalDate dateToday = LocalDate.now();
         LocalDate datePaymentChoose = requestPayment.getDatePaymentChoose();
 
         if (dateToday.getMonthValue() != datePaymentChoose.getMonthValue()){
-            paymentMapDto.setStatus(Status.PENDENTE);
+            paymentMapDto.setStats(Status.PENDENTE);
         } else {
-            paymentMapDto.setStatus(Status.CONCLUIDO);
+            paymentMapDto.setStats(Status.CONCLUIDO);
         }
         paymentMapDto.setDayMoth(requestPayment.getDatePaymentChoose());
        return paymentRepository.save(paymentMapDto);

@@ -38,15 +38,15 @@ public class SaveCostumerUseCase {
             String s = Pass.hashPassword(dtoCliente.getSenha());
             dtoCliente.setSenha(s);
 
-            costumer.setSenha(dtoCliente.getSenha());
+            costumer.setPassword(dtoCliente.getSenha());
             costumer.generateAndSetExternalId();
 
-            costumer.setSenha(dtoCliente.getSenha());
+            costumer.setPassword(dtoCliente.getSenha());
             costumer.setEmail(dtoCliente.getEmail());
             costumer.setCpf(dtoCliente.getCpf());
-            costumer.setNome(dtoCliente.getNomeCompleto());
-            costumer.setDataNascimento(dtoCliente.getDataNascimento());
-            costumer.setTelefone(dtoCliente.getTelefone());
+            costumer.setName(dtoCliente.getNomeCompleto());
+            costumer.setBirthDate(dtoCliente.getDataNascimento());
+            costumer.setPhone(dtoCliente.getTelefone());
 
         costumerRepository.save(costumer);
             return costumer;

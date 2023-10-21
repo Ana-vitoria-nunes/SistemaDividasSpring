@@ -22,9 +22,9 @@ public class Address {
 
     //obs: fazer a validação do endereçopara ser real, procurar por cep e aparecer automático tentar pfvr
     @Id
-    @Column(name = "id_Endereco")
+    @Column(name = "id_Address")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Endereco;
+    private Long id_Address;
 
     @NotBlank
     @Column(name = "externalIdAddress",unique = true)
@@ -38,26 +38,26 @@ public class Address {
     @NotBlank
     @Column(nullable = false)
     @Pattern(regexp = "^[a-zA-Z ]*$", message = "O bairro permite apenas letras")
-    private String bairro;
+    private String neighborhood;
 
     @NotBlank
     @Column(nullable = false, name = "rua_Avenida")
     @Pattern(regexp = "^[a-zA-Z ]*$", message = "O campo rua permite apenas letras ")
-    private String ruaAvenida;
+    private String street;
 
     @NotNull(message = "Número não pode ser nulo")
     @Column(nullable = false, name = "numero_Casa")
-    private Integer numeroCasa;
+    private Integer numberHouse;
 
     @NotBlank
     @Column(nullable = false)
     @Pattern(regexp = "^[A-Z]{2}$", message = "A sigla do estado deve conter exatamente duas letras maiúsculas")
-    private String estado;
+    private String state;
 
     @NotBlank
     @Column(nullable = false)
     @Pattern(regexp = "^[a-zA-Z ]*$", message = "O campo cidade permite apenas letras ")
-    private String cidade;
+    private String city;
 
     @NotBlank()
     @Pattern(regexp = "\\d{5}-\\d{3}", message = "Formato de CEP inválido")

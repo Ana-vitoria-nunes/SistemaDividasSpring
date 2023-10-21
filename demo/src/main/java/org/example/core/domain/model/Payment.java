@@ -42,17 +42,17 @@ public class Payment {
 
     @Column(nullable = false, name = "status")
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status stats;
 
     @Column(nullable = false,name = "valor_Parcela")
-    private BigDecimal ValorTotalParcela;
+    private BigDecimal totalQuota;
 
     @Column(nullable = false,name = "valor_Emprestimo")
-    private BigDecimal valorTotalEmprestimo;
+    private BigDecimal totalLending;
 
     @CreationTimestamp
     @Column(nullable = false)
-    private LocalDateTime dataHoraDivida;
+    private LocalDateTime dayDebts;
 
     public void generateAndSetExternalIdPayment() {
         this.externalIdPayment = UUID.randomUUID().toString();

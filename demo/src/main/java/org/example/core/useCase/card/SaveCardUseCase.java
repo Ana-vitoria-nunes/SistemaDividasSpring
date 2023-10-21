@@ -38,11 +38,11 @@ public class SaveCardUseCase {
         String s = Pass.hashCVV(cardRequest.getCvv());
         String n = Pass.hashNumeroCartao(cardRequest.getNumeroCartao());
         newCard.setCvv(s);
-        newCard.setNumeroCartao(n);
+        newCard.setNumberCard(n);
         dataParseToFormat(cardRequest.getDataDeValidade());
-        newCard.setDataDevalidade(cardRequest.getDataDeValidade());
-        newCard.setNomeClienteCartao(cardRequest.getNomeClienteCartao());
-        newCard.setLimiteCartao(cardRequest.getLimiteCartao());
+        newCard.setExpiryDate(cardRequest.getDataDeValidade());
+        newCard.setNameCostumerCard(cardRequest.getNomeClienteCartao());
+        newCard.setCardLimit(cardRequest.getLimiteCartao());
 
 
         return cardRepository.save(newCard);

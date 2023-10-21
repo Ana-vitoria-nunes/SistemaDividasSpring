@@ -22,9 +22,10 @@ public class UpdateCostumerUseCase {
             newCostumer.setEmail(clienteRequest.getEmail());
             return costumerRepository.save(newCostumer);
         } else if (escolha.equals("Senha")) {
-            newCostumer.setSenha(clienteRequest.getSenha());
+            newCostumer.setPassword(clienteRequest.getSenha());
             return costumerRepository.save(newCostumer);
         } else if (escolha.equals("Telefone")) {
+            newCostumer.setPhone(clienteRequest.getTelefone());
             return costumerRepository.save(newCostumer);
         } else {
             return null;

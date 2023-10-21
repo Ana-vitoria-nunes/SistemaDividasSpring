@@ -26,9 +26,9 @@ public class UpdateAddressUseCase {
                 new NoItemException("id  não encontrado"));
 
         address.getCostumer();
-        address.setNumeroCasa(addresRequest.getNumeroCasa());
-        address.setRuaAvenida(addresRequest.getRuaAvenida());
-        address.setBairro(addresRequest.getBairro());
+        address.setNumberHouse(addresRequest.getNumeroCasa());
+        address.setStreet(addresRequest.getRuaAvenida());
+        address.setNeighborhood(addresRequest.getBairro());
 
         return addressRepository.save(address);
     }

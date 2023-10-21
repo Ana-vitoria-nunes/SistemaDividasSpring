@@ -36,18 +36,18 @@ public class Costumer {
         @Column(nullable = false, length = 250, unique = true)
         @NotBlank
         @Pattern(regexp = "^[a-zA-Z ]*$", message = "O campo nome permite apenas letras")
-        private String nome;
+        private String name;
 
         @Column(nullable = false, length = 250, unique = true)
         @Email(message = "O email precisa conter '.' e '@'")  //Tratar o email
         private String email;
 
         @Column(nullable = false,unique = true)
-        private String senha;
+        private String password;
 
         @JsonFormat(pattern = "dd/MM/yyyy")
         @Column(name = "data_Nascimento")
-        private LocalDate dataNascimento ;
+        private LocalDate birthDate ;
 
         @CPF
         @Column(nullable = false, unique = true) // -> tratar cpf
@@ -55,7 +55,7 @@ public class Costumer {
 
         @Column(nullable = false, length = 15, unique = true)
         @Pattern(regexp = "^[0-9 ]*$", message = "O telefone permite apenas números")
-        private String telefone;
+        private String phone;
 
         public void generateAndSetExternalId() {
               this.externalId = UUID.randomUUID().toString();

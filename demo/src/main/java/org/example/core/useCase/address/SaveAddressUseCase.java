@@ -25,11 +25,11 @@ public class SaveAddressUseCase {
 
         newAddress.generateAndSetExternalIdAddress();
         newAddress.setCostumer(costumer);
-        newAddress.setBairro(addresRequestDto.getBairro());
-        newAddress.setRuaAvenida(addresRequestDto.getRuaAvenida());
-        newAddress.setNumeroCasa(addresRequestDto.getNumeroCasa());
-        newAddress.setEstado(addresRequestDto.getEstado());
-        newAddress.setCidade(addresRequestDto.getCidade());
+        newAddress.setNeighborhood(addresRequestDto.getBairro());
+        newAddress.setStreet(addresRequestDto.getRuaAvenida());
+        newAddress.setNumberHouse(addresRequestDto.getNumeroCasa());
+        newAddress.setState(addresRequestDto.getEstado());
+        newAddress.setCity(addresRequestDto.getCidade());
         newAddress.setCep(addresRequestDto.getCep());
 
         return addressRepository.save(newAddress);

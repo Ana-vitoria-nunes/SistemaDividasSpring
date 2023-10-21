@@ -25,7 +25,7 @@ public class Debts {
 
     @Column(nullable = false)
     //colocar a quantidade de zero a mais
-    private BigDecimal divida;
+    private BigDecimal debts;
 
     @ManyToOne()
     @JoinColumn(name = "externalIdCard")

@@ -40,11 +40,11 @@ public class Card {
 
     @Column(name = "nome_Cartao", nullable = false,length = 250)
     @Pattern(regexp = "^[a-zA-Z ]*$", message = "O nome do cliente permite apenas letras")
-    private String nomeClienteCartao;
+    private String nameCostumerCard;
 
     @Column(nullable = false,name = "numero_Cartao", unique = true)
   //  @Pattern(regexp = "^[0-9]*$", message = "This card it´s only alowed for numbers ")
-    private String numeroCartao;
+    private String numberCard;
 
     @Column(nullable = false,name = "cvv", unique = true)
    // @Pattern(regexp = "^[0-9]{3}$",message = "The entry of cvv it too long" )
@@ -52,10 +52,10 @@ public class Card {
 
     @Column(name = "data_Validade")
     @JsonFormat(pattern = "MM/yyyy")
-    private String dataDevalidade;
+    private String expiryDate;
 
     @Column(name = "limite_Cartao",nullable = false)
-    private BigDecimal limiteCartao;
+    private BigDecimal cardLimit;
 
     public void generateAndSetExternalIdCartao() {
         this.externalIdCard = UUID.randomUUID().toString();

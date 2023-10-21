@@ -23,7 +23,7 @@ public class SaveDebtsUseCase {
                 Debts  debtsRequest1 = new Debts();
                 debtsRequest1.generateAndSetExternalIdDebts();
                 debtsRequest1.setExternalIdCard(card);
-                debtsRequest1.setDivida(debtsRequest.getDividas());
+                debtsRequest1.setDebts(debtsRequest.getDividas());
                 return debtsRepository.save(debtsRequest1);
         }
 
