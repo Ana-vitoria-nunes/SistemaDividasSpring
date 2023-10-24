@@ -21,6 +21,7 @@ public class SaveCostumerUseCase {
 
     private final ModelMapper mapper;
     private final CostumerRepository costumerRepository;
+    @Transactional
     public Costumer saveCostumer(ClienteRequest dtoCliente) {
         Costumer costumer = mapper.map(dtoCliente, Costumer.class);
         //  String senhaCriptografada = passwordEncoderService.encodePassword(dtoCliente.getSenha(), bCryptPasswordEncoder);
