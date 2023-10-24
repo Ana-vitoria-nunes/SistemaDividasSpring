@@ -1,5 +1,6 @@
 package org.example.core.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,6 +34,7 @@ public class Address {
     @OneToOne()
     @JoinColumn(nullable = false, name = "id_externoCliente")
     @NotNull
+    @JsonIgnore
     private Costumer costumer;
 
     @NotNull(message = "Número não pode ser nulo")

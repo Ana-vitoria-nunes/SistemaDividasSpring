@@ -1,6 +1,7 @@
 package org.example.core.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -58,6 +59,7 @@ public class Costumer {
         @Pattern(regexp = "^[0-9 ]*$", message = "O telefone permite apenas números")
         private String phone;
 
+        @JsonIgnore
         @OneToOne(mappedBy = "costumer",cascade = CascadeType.ALL)
         @JoinColumn(name = "externalIdAddress",unique = true)
         private Address address;
