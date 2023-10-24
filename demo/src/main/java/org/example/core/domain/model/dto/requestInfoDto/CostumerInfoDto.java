@@ -15,7 +15,7 @@ import java.util.List;
 public class CostumerInfoDto {
     private Long idInterno;
     private String nome;
-    private String email;
+    private String email; // email ofuscado
     AddressRequestInfoDto endereço;
     List<PaymentInfoDto> transações;
 }

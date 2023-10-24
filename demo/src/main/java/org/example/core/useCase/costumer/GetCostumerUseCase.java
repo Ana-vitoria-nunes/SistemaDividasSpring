@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.example.core.domain.model.Card;
 import org.example.core.domain.model.Costumer;
 import org.example.core.domain.model.Payment;
-import org.example.core.domain.model.dto.requestDto.AddressRequest;
 import org.example.core.domain.model.dto.requestInfoDto.AddressRequestInfoDto;
 import org.example.core.domain.model.dto.requestInfoDto.CostumerInfoDto;
 import org.example.core.domain.model.dto.requestInfoDto.PaymentInfoDto;
@@ -27,13 +26,15 @@ public class GetCostumerUseCase {
         return cardRepository.findAll().stream().map(costumer -> putdata(costumer)).collect(Collectors.toList());
     }
 
-    public CostumerInfoDto putdata(Card card){
+    public CostumerInfoDto putdata(Card card) {
+        Costumer costumer = card.getCostumer();
         return CostumerInfoDto.builder()
                 .idInterno(card.getIdCard())
-                .nome(card.getCostumer().getName())
-                .email(card.getCostumer().getEmail())
-                .endereço(getAddressInfo(card.getCostumer()))
-                .transações(getPayment(card.getIdPayments())).build();
+                .nome(costumer.getName())
+                .email(EmailUtils.obscureEmail(costumer.getEmail()))
+                .endereço(getAddressInfo(costumer))
+                .transações(getPayment(card.getIdPayments()))
+                .build();
     }
 
     public List<PaymentInfoDto> getPayment(List<Payment> payments){

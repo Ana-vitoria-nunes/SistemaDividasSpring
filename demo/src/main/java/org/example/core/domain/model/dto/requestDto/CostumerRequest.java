@@ -38,4 +38,5 @@ public class CostumerRequest {
     @NotBlank
     String telefone;
 
+    String maskedEmail;
 }
