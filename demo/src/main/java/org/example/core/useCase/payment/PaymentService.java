@@ -93,7 +93,7 @@ public class PaymentService {
         paymentMapDto.setDayMoth(requestPayment.getDatePaymentChoose());
 
         paymentRepository.save(paymentMapDto);
-
+//jdefj
         debts.setExternalIdPayment(paymentMapDto);
         debtsRepository.save(debts);
 
