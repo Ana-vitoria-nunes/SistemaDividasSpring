@@ -81,7 +81,6 @@ public class PaymentService {
         paymentMapDto.setTotalQuota(paymentDto.getValorTotalParcela());
         paymentMapDto.setDayDebts(paymentMapDto.getDayDebts());
 
-        paymentMapDto.setDebts(saveDebts(debts));
 
         LocalDate dateToday = LocalDate.now();
         LocalDate datePaymentChoose = requestPayment.getDatePaymentChoose();
@@ -92,21 +91,13 @@ public class PaymentService {
             paymentMapDto.setStats(Status.CONCLUIDO);
         }
         paymentMapDto.setDayMoth(requestPayment.getDatePaymentChoose());
-       return paymentRepository.save(paymentMapDto);
-    }
 
+        paymentRepository.save(paymentMapDto);
 
-    public List<Debts> saveDebts(Debts debts) {
-        Payment payment = paymentRepository.findByExternalIdPayment(String.valueOf(debts.getExternalIdPayment())).orElseThrow(()->
-                new NoItemException("Pagamento não encontrado"));
+        debts.setExternalIdPayment(paymentMapDto);
+        debtsRepository.save(debts);
 
-        List<Debts> debtsList = payment.getDebts(); // Obtém a lista de dívidas associadas ao pagamento
-        debtsList.add(debts); // Adiciona a nova dívida à lista
-        payment.setDebts(debtsList); // Atualiza a lista de dívidas no pagamento
-
-        paymentRepository.save(payment); // Salva o pagamento atualizado no repositório
-
-        return debtsList;
+        return paymentMapDto;
     }
 
 }
