@@ -34,8 +34,6 @@ public class AddressController {
      }catch (DataIntegrityViolationException erro ){
         if (erro.getMessage().contains("Detalhe: Key (id_externo_cliente)")){
             return new ResponseEntity<>(new ResponseDto("Esse cliente contém o endereço cadastrado"),HttpStatus.BAD_REQUEST);
-        } else if (erro.getMessage().contains("ERROR: value too long for type character varying(15)")) {
-            return new ResponseEntity<>(new ResponseDto("O telefone precisa conter apenas 15 numeros"),HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(new ResponseDto("Certifique seus dados"),HttpStatus.INTERNAL_SERVER_ERROR);
     } catch (Exception erro){

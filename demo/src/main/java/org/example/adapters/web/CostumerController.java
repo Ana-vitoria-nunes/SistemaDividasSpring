@@ -38,6 +38,9 @@ public class CostumerController {
             }else if (erro.getMessage().contains(" Detalhe: Key (phone)")) {
                 return new ResponseEntity<>(new ResponseDto("Telefone já existe"), HttpStatus.BAD_REQUEST);
             }
+            else if (erro.getMessage().contains("ERROR: value too long for type character varying(15)")) {
+                return new ResponseEntity<>(new ResponseDto("O telefone precisa conter apenas 15 numeros"),HttpStatus.BAD_REQUEST);
+            }
             return new ResponseEntity<>(new ResponseDto("Verifique sua entrada de dados"), HttpStatus.BAD_REQUEST);
         } catch (Exception erro){
             return new ResponseEntity<>(erro.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
