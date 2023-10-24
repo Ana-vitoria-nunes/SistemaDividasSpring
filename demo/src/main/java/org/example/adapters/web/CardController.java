@@ -33,6 +33,8 @@ public class CardController {
         }catch (DataIntegrityViolationException erro) {
             if (erro.getMessage().contains(" Detalhe: Key (id_externo_cliente)")){
                 return new ResponseEntity<>(new ResponseDto("O Cliente ja foi cadastrado "),HttpStatus.BAD_REQUEST);
+            } else if (erro.getMessage().contains("Key (nome_cartao)")) {
+                return new ResponseEntity<>(new ResponseDto("O nome do cartão já existe"),HttpStatus.BAD_REQUEST);
             }
             return new ResponseEntity<>(new ResponseDto("Verifique sua entrada de dados"), HttpStatus.BAD_REQUEST);
         } catch (Exception erro){
