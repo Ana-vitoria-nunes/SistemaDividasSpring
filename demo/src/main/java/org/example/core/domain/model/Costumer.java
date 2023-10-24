@@ -58,6 +58,10 @@ public class Costumer {
         @Pattern(regexp = "^[0-9 ]*$", message = "O telefone permite apenas números")
         private String phone;
 
+        @OneToOne(mappedBy = "costumer",cascade = CascadeType.ALL)
+        @JoinColumn(name = "externalIdAddress",unique = true)
+        private Address address;
+
         public void generateAndSetExternalId() {
               this.externalId = UUID.randomUUID().toString();
         }

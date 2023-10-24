@@ -3,7 +3,7 @@ package org.example.core.useCase.card;
 
 import lombok.RequiredArgsConstructor;
 import org.example.adapters.config.Pass;
-import org.example.core.domain.model.dto.CardRequest;
+import org.example.core.domain.model.dto.requestDto.CardRequest;
 import org.example.core.domain.excecao.NoItemException;
 import org.example.core.domain.model.Card;
 import org.example.core.domain.model.Costumer;
@@ -35,8 +35,8 @@ public class SaveCardUseCase {
         newCard.generateAndSetExternalIdCartao();
         newCard.setCostumer(costumer);
         newCard.setCostumer(costumer);
-        String s = Pass.hashCVV(cardRequest.getCvv());
-        String n = Pass.hashNumeroCartao(cardRequest.getNumeroCartao());
+        String s = Pass.hashCrypto(cardRequest.getCvv());
+        String n = Pass.hashCrypto(cardRequest.getNumeroCartao());
         newCard.setCvv(s);
         newCard.setNumberCard(n);
         dataParseToFormat(cardRequest.getDataDeValidade());

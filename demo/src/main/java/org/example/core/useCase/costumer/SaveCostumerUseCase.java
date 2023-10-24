@@ -1,9 +1,8 @@
 package org.example.core.useCase.costumer;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.adapters.config.Pass;
-import org.example.core.domain.model.dto.CostumerRequest;
+import org.example.core.domain.model.dto.requestDto.CostumerRequest;
 import org.example.core.domain.model.Costumer;
 import org.example.core.port.CostumerRepository;
 import org.modelmapper.ModelMapper;
@@ -27,12 +26,12 @@ public class SaveCostumerUseCase {
             Costumer costumer = new Costumer();
             //  String senhaCriptografada = passwordEncoderService.encodePassword(dtoCliente.getSenha(), bCryptPasswordEncoder);
             // costumer.setSenha(pass.encode(dtoCliente.getSenha()));
-            String s = Pass.hashPassword(dtoCliente.getSenha());
+
+            String s = Pass.hashCrypto(dtoCliente.getSenha());
             dtoCliente.setSenha(s);
 
             costumer.setPassword(dtoCliente.getSenha());
             costumer.generateAndSetExternalId();
-
             costumer.setPassword(dtoCliente.getSenha());
             costumer.setEmail(dtoCliente.getEmail());
             costumer.setCpf(dtoCliente.getCpf());

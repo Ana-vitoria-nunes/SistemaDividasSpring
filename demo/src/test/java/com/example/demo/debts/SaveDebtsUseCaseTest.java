@@ -1,9 +1,7 @@
 package com.example.demo.debts;
 import org.example.core.domain.model.Card;
-import org.example.core.domain.model.Costumer;
 import org.example.core.domain.model.Debts;
-import org.example.core.domain.model.dto.CardRequest;
-import org.example.core.domain.model.dto.DebtsRequest;
+import org.example.core.domain.model.dto.requestDto.DebtsRequest;
 import org.example.core.port.CardRepository;
 import org.example.core.port.DebtsRepository;
 import org.example.core.useCase.debts.SaveDebtsUseCase;

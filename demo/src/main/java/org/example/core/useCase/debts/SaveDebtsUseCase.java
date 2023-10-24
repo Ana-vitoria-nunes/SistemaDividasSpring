@@ -1,7 +1,7 @@
 package org.example.core.useCase.debts;
 
 import lombok.RequiredArgsConstructor;
-import org.example.core.domain.model.dto.DebtsRequest;
+import org.example.core.domain.model.dto.requestDto.DebtsRequest;
 import org.example.core.domain.excecao.NoItemException;
 import org.example.core.domain.model.Card;
 import org.example.core.domain.model.Debts;

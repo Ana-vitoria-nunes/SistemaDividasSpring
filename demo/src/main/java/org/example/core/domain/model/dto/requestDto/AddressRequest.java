@@ -1,4 +1,4 @@
-package org.example.core.domain.model.dto;
+package org.example.core.domain.model.dto.requestDto;
 
 //import com.example.demo.model.Costumer;
 
@@ -6,16 +6,14 @@ import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class AddresRequest {
+@Builder
+public class AddressRequest {
     //obs: fazer a validação do endereçopara ser real, procurar por cep e aparecer automático tentar pfvr
 
     private String idCostumer;

@@ -7,8 +7,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.core.useCase.address.SaveAddressUseCase;
 import org.example.core.useCase.address.UpdateAddressUseCase;
-import org.example.core.domain.model.dto.AddresRequest;
-import org.example.core.domain.model.dto.ResponseDto;
+import org.example.core.domain.model.dto.requestDto.AddressRequest;
+import org.example.core.domain.model.dto.responseDto.ResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,9 +26,9 @@ public class AddressController {
   private final SaveAddressUseCase saveAddressUseCase;
   private final UpdateAddressUseCase updateAddressUseCase;
   @PostMapping("/addingAddress")
-  public ResponseEntity addAddress(@Valid @RequestBody AddresRequest addresRequest){
+  public ResponseEntity addAddress(@Valid @RequestBody AddressRequest addressRequest){
     try{
-      saveAddressUseCase.saveAddress(addresRequest);
+      saveAddressUseCase.saveAddress(addressRequest);
         return new ResponseEntity<>( new ResponseDto("Endereço criado"),HttpStatus.CREATED);
      }catch (ConstraintViolationException ex) {
         Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
@@ -41,7 +41,7 @@ public class AddressController {
 
   @PutMapping("/{idAddress}")
   @Transactional()
-  public ResponseEntity updateAddress(@Valid @PathVariable(value = "idAddress" ) String id, @Valid @RequestBody AddresRequest address){
+  public ResponseEntity updateAddress(@Valid @PathVariable(value = "idAddress" ) String id, @Valid @RequestBody AddressRequest address){
     try {
           updateAddressUseCase.updateAllData(id,address);
          return new ResponseEntity<>(new ResponseDto("Atualizado"),HttpStatus.OK);

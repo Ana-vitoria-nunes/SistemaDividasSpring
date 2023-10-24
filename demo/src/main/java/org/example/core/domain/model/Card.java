@@ -40,8 +40,11 @@ public class Card {
     @Column(name = "limite_Cartao",nullable = false)
     private BigDecimal cardLimit;
 
-    @OneToMany(mappedBy = "externalIdCard")
+    @OneToMany(mappedBy = "externalIdCard", fetch = FetchType.EAGER)
     private List<Payment> idPayments;
+
+    @OneToMany(mappedBy = "externalIdCard",cascade = CascadeType.ALL)
+    private List<Debts> debts;
 
     @Column(name = "data_Validade")
     @JsonFormat(pattern = "MM/yyyy")
@@ -53,7 +56,7 @@ public class Card {
     @Column(nullable = false,name = "numero_Cartao", unique = true)
     private String numberCard;
 
-    @Column(nullable = false,name = "cvv", unique = true,length = 3)
+    @Column(nullable = false,name = "cvv", unique = true)
     private String cvv;
 
     public void generateAndSetExternalIdCartao() {

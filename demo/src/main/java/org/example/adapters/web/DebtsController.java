@@ -3,8 +3,8 @@ package org.example.adapters.web;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.core.domain.model.dto.DebtsRequest;
-import org.example.core.domain.model.dto.ResponseDto;
+import org.example.core.domain.model.dto.requestDto.DebtsRequest;
+import org.example.core.domain.model.dto.responseDto.ResponseDto;
 import org.example.core.useCase.debts.SaveDebtsUseCase;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

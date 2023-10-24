@@ -2,7 +2,7 @@ package com.example.demo.address;
 
 import org.example.core.domain.model.Address;
 import org.example.core.domain.model.Costumer;
-import org.example.core.domain.model.dto.AddresRequest;
+import org.example.core.domain.model.dto.requestDto.AddressRequest;
 import org.example.core.port.AddressRepository;
 import org.example.core.port.CostumerRepository;
 import org.example.core.useCase.address.SaveAddressUseCase;
@@ -34,12 +34,12 @@ class SaveAddressUseCaseTest {
         costumer.setExternalId("12A");
 
         when(costumerRepository.findByExternalId("12A")).thenReturn(Optional.of(costumer));
-        AddresRequest addresRequest = new AddresRequest(costumer.getExternalId(),"Muarama","Lavenir da cunha",12,"MG","Patos","12345-45");
+        AddressRequest addressRequest = new AddressRequest(costumer.getExternalId(),"Muarama","Lavenir da cunha",12,"MG","Patos","12345-45");
         Address address = new Address();
 
         when(addressRepository.save(any(Address.class))).thenReturn(address);
 
-        Address saved = addressService.saveAddress(addresRequest);
+        Address saved = addressService.saveAddress(addressRequest);
         Assertions.assertEquals(saved,address);
     }
 

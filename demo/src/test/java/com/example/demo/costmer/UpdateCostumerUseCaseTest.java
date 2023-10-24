@@ -1,7 +1,7 @@
 package com.example.demo.costmer;
 
 import org.example.core.domain.model.Costumer;
-import org.example.core.domain.model.dto.CostumerRequest;
+import org.example.core.domain.model.dto.requestDto.CostumerRequest;
 import org.example.core.port.CostumerRepository;
 import org.example.core.useCase.costumer.UpdateCostumerUseCase;
 import org.junit.jupiter.api.Assertions;

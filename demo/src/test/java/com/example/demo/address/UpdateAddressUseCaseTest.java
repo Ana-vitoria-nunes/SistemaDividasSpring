@@ -2,10 +2,9 @@ package com.example.demo.address;
 
 import org.example.core.domain.model.Address;
 import org.example.core.domain.model.Costumer;
-import org.example.core.domain.model.dto.AddresRequest;
+import org.example.core.domain.model.dto.requestDto.AddressRequest;
 import org.example.core.port.AddressRepository;
 import org.example.core.port.CostumerRepository;
-import org.example.core.useCase.address.SaveAddressUseCase;
 import org.example.core.useCase.address.UpdateAddressUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -42,14 +41,14 @@ class UpdateAddressUseCaseTest {
         when(costumerRepository.findByExternalId(costumer.getExternalId())).thenReturn(Optional.of(costumer));
         when(addressRepository.findByExternalIdAddress(address.getExternalIdAddress())).thenReturn(Optional.of(address));
 
-        AddresRequest addresRequest = new AddresRequest("19j","Muarama", "Lavenir da cunha", 12, "MG", "Patos", "12345-459");
+        AddressRequest addressRequest = new AddressRequest("19j","Muarama", "Lavenir da cunha", 12, "MG", "Patos", "12345-459");
         String newneighborhood = "Planalto";
 
-        addresRequest.setBairro(newneighborhood);
-        updateAddress.updateAllData("15l",addresRequest);
+        addressRequest.setBairro(newneighborhood);
+        updateAddress.updateAllData("15l", addressRequest);
 
 
-        Assertions.assertEquals(newneighborhood, addresRequest.getBairro());
+        Assertions.assertEquals(newneighborhood, addressRequest.getBairro());
 
     }
 }

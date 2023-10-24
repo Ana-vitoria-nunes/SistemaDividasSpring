@@ -2,7 +2,7 @@ package org.example.core.useCase.costumer;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.example.core.domain.model.dto.CostumerRequest;
+import org.example.core.domain.model.dto.requestDto.CostumerRequest;
 import org.example.core.domain.excecao.NoItemException;
 import org.example.core.domain.model.Costumer;
 import org.example.core.port.CostumerRepository;

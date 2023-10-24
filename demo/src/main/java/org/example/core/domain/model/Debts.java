@@ -30,7 +30,7 @@ public class Debts {
     @JoinColumn(name = "externalIdCard",unique = true)
     private Card externalIdCard;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "externalIdPayment")
     private Payment externalIdPayment;
 

@@ -1,9 +1,9 @@
 package org.example.adapters.web;
 
 import lombok.RequiredArgsConstructor;
-import org.example.core.domain.model.dto.DebstRequestPayment;
-import org.example.core.domain.model.dto.PaymentDto;
-import org.example.core.domain.model.dto.ResponseDto;
+import org.example.core.domain.model.dto.requestDto.DebstRequestPayment;
+import org.example.core.domain.model.dto.requestDto.PaymentDto;
+import org.example.core.domain.model.dto.responseDto.ResponseDto;
 import org.example.core.useCase.payment.PaymentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

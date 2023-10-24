@@ -2,7 +2,7 @@ package com.example.demo.costmer;
 
 import org.example.adapters.config.Pass;
 import org.example.core.domain.model.Costumer;
-import org.example.core.domain.model.dto.CostumerRequest;
+import org.example.core.domain.model.dto.requestDto.CostumerRequest;
 import org.example.core.port.CostumerRepository;
 import org.example.core.useCase.costumer.SaveCostumerUseCase;
 import org.junit.jupiter.api.Assertions;
@@ -43,7 +43,7 @@ class SaveCostumerUseCaseTest {
 
         Costumer costumer = new Costumer();
 
-        String s = Pass.hashPassword(dto.getSenha());
+        String s = Pass.hashCrypto(dto.getSenha());
 
         dto.setSenha(s);
         costumer.setPassword(dto.getSenha());

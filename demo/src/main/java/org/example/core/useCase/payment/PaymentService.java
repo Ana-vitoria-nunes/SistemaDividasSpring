@@ -1,9 +1,10 @@
 package org.example.core.useCase.payment;
 
 import lombok.RequiredArgsConstructor;
-import org.example.core.domain.model.dto.DebstRequestPayment;
-import org.example.core.domain.model.dto.PaymentDto;
-import org.example.core.domain.model.dto.ResponseDto;
+import org.example.core.domain.model.dto.requestDto.DebstRequestPayment;
+import org.example.core.domain.model.dto.requestDto.PaymentDto;
+import org.example.core.domain.model.dto.requestInfoDto.DebtsInfoDto;
+import org.example.core.domain.model.dto.responseDto.ResponseDto;
 import org.example.core.domain.excecao.NoItemException;
 import org.example.core.domain.model.Card;
 import org.example.core.domain.model.Debts;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +27,7 @@ public class PaymentService {
       private final CardRepository cardRepository;
       private double juros = 0;
       private int parcela = 0;
+      // lembrar de adicionar a quantidade de parcelas
     public Payment insertValueAcordingToDebts(DebstRequestPayment requestPayment, PaymentDto paymentDto) {
 
         Debts debts = debtsRepository.findByExternalIdDebts(requestPayment.getIdexternoDebts()).orElseThrow(() ->
@@ -70,6 +73,9 @@ public class PaymentService {
         paymentMapDto.generateAndSetExternalIdPayment();
         paymentDto.setValorTotalParcela(valorTotalParcela);
         paymentDto.setValorTotalEmprestimo(valorTotalEmprestimo);
+
+
+        paymentMapDto.setQuota(requestPayment.getEscolha());
         paymentMapDto.setExternalIdCard(card);
         paymentMapDto.setTotalLending(paymentDto.getValorTotalEmprestimo());
         paymentMapDto.setTotalQuota(paymentDto.getValorTotalParcela());
@@ -88,6 +94,7 @@ public class PaymentService {
         paymentMapDto.setDayMoth(requestPayment.getDatePaymentChoose());
        return paymentRepository.save(paymentMapDto);
     }
+
 
 }
 

@@ -2,9 +2,10 @@ package org.example.adapters.web;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.core.useCase.costumer.GetCostumerUseCase;
 import org.example.core.useCase.costumer.SaveCostumerUseCase;
-import org.example.core.domain.model.dto.CostumerRequest;
-import org.example.core.domain.model.dto.ResponseDto;
+import org.example.core.domain.model.dto.requestDto.CostumerRequest;
+import org.example.core.domain.model.dto.responseDto.ResponseDto;
 import org.example.core.useCase.costumer.UpdateCostumerUseCase;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class CostumerController {
    private final SaveCostumerUseCase saveCostumer;
    private final UpdateCostumerUseCase updateCostumer;
+   private final GetCostumerUseCase getCostumer;
     //tratar excesão do erro de cpf
     // tratar exesão que senha pode ser repetida
 
@@ -49,4 +51,10 @@ public class CostumerController {
             return new ResponseEntity<>(new ResponseDto(erro.getMessage()),HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/data")
+    public ResponseEntity getAll(){
+        return new ResponseEntity<>(getCostumer.findAll(), HttpStatus.OK);
+    }
+
 }

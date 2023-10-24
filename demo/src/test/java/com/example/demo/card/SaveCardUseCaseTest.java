@@ -1,7 +1,7 @@
 package com.example.demo.card;
 import org.example.core.domain.model.Card;
 import org.example.core.domain.model.Costumer;
-import org.example.core.domain.model.dto.CardRequest;
+import org.example.core.domain.model.dto.requestDto.CardRequest;
 import org.example.core.port.CardRepository;
 import org.example.core.port.CostumerRepository;
 import org.example.core.useCase.card.SaveCardUseCase;
@@ -14,8 +14,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -42,7 +40,7 @@ class SaveCardUseCaseTest {
 
 
         when(costumerRepository.findByExternalId("19j")).thenReturn(Optional.of(costumer));
-        CardRequest cardRequest = new CardRequest("19j","Ana Nunes","1234567899874561",456,data, BigDecimal.valueOf(1500));
+        CardRequest cardRequest = new CardRequest("19j","Ana Nunes","1234567899874561","456",data, BigDecimal.valueOf(1500));
 
         cardUseCase.dataParseToFormat(cardRequest.getDataDeValidade());
 
