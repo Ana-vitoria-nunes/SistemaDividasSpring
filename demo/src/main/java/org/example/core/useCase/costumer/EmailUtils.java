@@ -19,10 +19,17 @@ public class EmailUtils {
     private static String obscureLocalPart(String localPart) {
         int length = localPart.length();
         if (length <= 2) {
-            return "**";
+            return localPart;
         }
 
-        int halfLength = length / 2;
-        return localPart.substring(0, halfLength) + "**";
+        return localPart.substring(0, 1) + repeatCharacter(length - 1);
+    }
+
+    private static String repeatCharacter(int count) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            builder.append("*");
+        }
+        return builder.toString();
     }
 }
