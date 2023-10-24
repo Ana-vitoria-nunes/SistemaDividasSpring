@@ -1,4 +1,4 @@
-package org.example.core.domain.model.dto;
+package org.example.core.domain.model.dto.requestDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

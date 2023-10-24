@@ -1,4 +1,4 @@
-package org.example.core.domain.model.dto;
+package org.example.core.domain.model.dto.responseDto;
 
 
 import lombok.Getter;

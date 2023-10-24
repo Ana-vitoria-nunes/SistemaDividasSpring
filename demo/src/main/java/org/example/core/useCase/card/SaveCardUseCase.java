@@ -3,7 +3,7 @@ package org.example.core.useCase.card;
 
 import lombok.RequiredArgsConstructor;
 import org.example.adapters.config.Pass;
-import org.example.core.domain.model.dto.CardRequest;
+import org.example.core.domain.model.dto.requestDto.CardRequest;
 import org.example.core.domain.excecao.NoItemException;
 import org.example.core.domain.model.Card;
 import org.example.core.domain.model.Costumer;
@@ -35,22 +35,24 @@ public class SaveCardUseCase {
         newCard.generateAndSetExternalIdCartao();
         newCard.setCostumer(costumer);
         newCard.setCostumer(costumer);
-        String s = Pass.hashCVV(cardRequest.getCvv());
-        String n = Pass.hashNumeroCartao(cardRequest.getNumeroCartao());
+        String s = Pass.hashCrypto(cardRequest.getCvv());
+        String n = Pass.hashCrypto(cardRequest.getNumeroCartao());
         newCard.setCvv(s);
-        newCard.setNumeroCartao(n);
+        newCard.setNumberCard(n);
         dataParseToFormat(cardRequest.getDataDeValidade());
-        newCard.setDataDevalidade(cardRequest.getDataDeValidade());
-        newCard.setNomeClienteCartao(cardRequest.getNomeClienteCartao());
-        newCard.setLimiteCartao(cardRequest.getLimiteCartao());
+        newCard.setExpiryDate(cardRequest.getDataDeValidade());
+        newCard.setNameCostumerCard(cardRequest.getNomeClienteCartao());
+        newCard.setCardLimit(cardRequest.getLimiteCartao());
 
 
         return cardRepository.save(newCard);
     }
-    public LocalDate dataParseToFormat(String dto) {
-        DateTimeFormatter dateFormatOutput = DateTimeFormatter.ofPattern("yyyy-MM");
-        LocalDate dataDeValidade;
 
-      return dataDeValidade = YearMonth.parse(dto,dateFormatOutput).atDay(1);
+    public LocalDate dataParseToFormat(String dto) {
+        DateTimeFormatter dateFormatOutput = DateTimeFormatter.ofPattern("MM/yyyy");
+
+        return YearMonth.parse(dto, dateFormatOutput).atDay(1);
     } // -> método em uma controladora
+
+
 }

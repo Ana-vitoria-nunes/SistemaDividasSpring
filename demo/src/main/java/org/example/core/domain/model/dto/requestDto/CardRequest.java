@@ -1,4 +1,4 @@
-package org.example.core.domain.model.dto;
+package org.example.core.domain.model.dto.requestDto;
 
 
 
@@ -19,7 +19,7 @@ public class CardRequest {
     private String idexternoCliente;
     private String nomeClienteCartao;
     private String numeroCartao;
-    private int cvv;
+    private String cvv;
 
     @JsonFormat(pattern = "MM/yyyy")
     @NotNull

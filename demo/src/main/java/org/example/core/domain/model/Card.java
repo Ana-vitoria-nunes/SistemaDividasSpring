@@ -10,14 +10,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Bean;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
+
+@Data
 @Entity
 @Table(name = "cartao")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "idCard")
@@ -35,27 +37,27 @@ public class Card {
     @JoinColumn(name= "id_externoCliente")
     private Costumer costumer;
 
-    @OneToMany(mappedBy = "externalIdCard")
+    @Column(name = "limite_Cartao",nullable = false)
+    private BigDecimal cardLimit;
+
+    @OneToMany(mappedBy = "externalIdCard", fetch = FetchType.EAGER)
     private List<Payment> idPayments;
 
-    @Column(name = "nome_Cartao", nullable = false,length = 250)
-    @Pattern(regexp = "^[a-zA-Z ]*$", message = "O nome do cliente permite apenas letras")
-    private String nomeClienteCartao;
-
-    @Column(nullable = false,name = "numero_Cartao", unique = true)
-  //  @Pattern(regexp = "^[0-9]*$", message = "This card it´s only alowed for numbers ")
-    private String numeroCartao;
-
-    @Column(nullable = false,name = "cvv", unique = true)
-   // @Pattern(regexp = "^[0-9]{3}$",message = "The entry of cvv it too long" )
-    private String cvv;
+    @OneToMany(mappedBy = "externalIdCard",cascade = CascadeType.ALL)
+    private List<Debts> debts;
 
     @Column(name = "data_Validade")
-    @JsonFormat(pattern = "yyyy-MM")
-    private String dataDevalidade;
+    @JsonFormat(pattern = "MM/yyyy")
+    private String expiryDate;
 
-    @Column(name = "limite_Cartao",nullable = false)
-    private BigDecimal limiteCartao;
+    @Column(name = "nome_Cartao", nullable = false,length = 250,unique = true)
+    private String nameCostumerCard;
+
+    @Column(nullable = false,name = "numero_Cartao", unique = true)
+    private String numberCard;
+
+    @Column(nullable = false,name = "cvv", unique = true)
+    private String cvv;
 
     public void generateAndSetExternalIdCartao() {
         this.externalIdCard = UUID.randomUUID().toString();

@@ -2,22 +2,26 @@ package org.example.core.domain.excecao;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
-import org.example.core.domain.model.dto.ResponseDto;
-import org.springframework.core.codec.DecodingException;
+import lombok.RequiredArgsConstructor;
+import org.example.core.domain.model.dto.responseDto.ResponseDto;
 import org.springframework.http.HttpStatus;
-
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.bind.support.WebExchangeBindException;
+import org.springframework.web.reactive.result.method.annotation.ResponseEntityExceptionHandler;
+
 
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Component
 @RestControllerAdvice
-public class ApplicationAdviceController{
+@RequiredArgsConstructor
+public class ApplicationAdviceController extends ResponseEntityExceptionHandler {
 
+    //private final EnderecoValidator enderecoValidator;
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseDto handlerConstraintViolationException(ConstraintViolationException ex){
@@ -26,20 +30,14 @@ public class ApplicationAdviceController{
         return new ResponseDto(errorMessages);
     }
 
-    @ExceptionHandler(DecodingException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseDto handlerHttpMessageNotReadableException(DecodingException exception){
-        return new ResponseDto(exception.getMessage());
-    }
-
-    @ExceptionHandler(WebExchangeBindException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseDto handlerWebExchangeBindException(WebExchangeBindException exception){
-        return new ResponseDto(exception.getMessage());
-    }
-
-
-
 }
+
+
+
+
+
+
+
+
 
 

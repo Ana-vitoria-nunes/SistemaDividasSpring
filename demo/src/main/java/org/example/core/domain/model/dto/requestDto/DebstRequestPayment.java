@@ -1,4 +1,4 @@
-package org.example.core.domain.model.dto;
+package org.example.core.domain.model.dto.requestDto;
 
 
 
@@ -16,7 +16,6 @@ public class DebstRequestPayment {
     private int escolha;
     private String idexternoDebts;
     private String idexternoCard;
-
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate datePaymentChoose;
 }

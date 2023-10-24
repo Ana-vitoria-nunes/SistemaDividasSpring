@@ -6,9 +6,4 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SistemaDividasApplicationTests {
 
-
-	@Test
-	void contextLoads() {
-	}
-
 }
