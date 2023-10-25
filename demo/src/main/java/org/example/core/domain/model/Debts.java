@@ -23,11 +23,11 @@ public class Debts {
     @Column(name = "externalIdDebts",unique = true)
     private String externalIdDebts;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = false)
     private BigDecimal debts;
 
     @ManyToOne()
-    @JoinColumn(name = "externalIdCard",unique = true)
+    @JoinColumn(name = "externalIdCard")
     private Card externalIdCard;
 
     @ManyToOne()
