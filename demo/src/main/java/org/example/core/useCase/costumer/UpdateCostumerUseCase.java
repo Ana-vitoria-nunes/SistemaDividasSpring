@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class UpdateCostumerUseCase {
 
+    //teste
+
     private final CostumerRepository costumerRepository;
     @Transactional
     public Costumer updateCostumer(CostumerRequest costumerRequest, String id, String escolha) {
