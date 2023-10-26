@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 public class SaveDebtsUseCase {
                 private final CardRepository cardRepository;
                 private final DebtsRepository debtsRepository;
-                private final PaymentRepository paymentRepository;
         public Debts save (DebtsRequest debtsRequest){
                 Card card = cardRepository.findByExternalIdCard(debtsRequest.getIdexternoCard()).orElseThrow(()->
                         new NoItemException("Cartão não encontrado"));

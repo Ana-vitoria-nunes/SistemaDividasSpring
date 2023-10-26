@@ -20,14 +20,14 @@ public class Debts {
     private Long id;
 
     @NotBlank
-    @Column(name = "externalIdDebts",unique = true)
+    @Column(name = "externalIdDebts")
     private String externalIdDebts;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private BigDecimal debts;
 
     @ManyToOne()
-    @JoinColumn(name = "externalIdCard",unique = true)
+    @JoinColumn(name = "externalIdCard")
     private Card externalIdCard;
 
     @ManyToOne()

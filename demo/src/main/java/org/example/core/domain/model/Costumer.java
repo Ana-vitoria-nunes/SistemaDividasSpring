@@ -59,9 +59,9 @@ public class Costumer {
         @Pattern(regexp = "^[0-9 ]*$", message = "O telefone permite apenas números")
         private String phone;
 
-        @JsonIgnore
         @OneToOne(mappedBy = "costumer",cascade = CascadeType.ALL)
         @JoinColumn(name = "externalIdAddress",unique = true)
+        @JsonIgnore
         private Address address;
 
         public void generateAndSetExternalId() {
