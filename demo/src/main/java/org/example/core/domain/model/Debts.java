@@ -23,6 +23,7 @@ public class Debts {
     @Column(name = "externalIdDebts")
     private String externalIdDebts;
 
+
     @Column(nullable = false)
     private BigDecimal debts;
 
