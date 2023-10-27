@@ -1,5 +1,6 @@
 # Pague Certo - Sistema de Gerenciamento de Clientes e Pagamentos
 <hr>
+
 O **Sistema de Gerenciamento Pague Certo** é uma aplicação desenvolvida em Java que permite o gerenciamento de clientes, endereços, cartões, dívidas e pagamentos. Com esta aplicação, você pode realizar várias operações relacionadas a clientes e pagamentos.
 
 ## Tecnologias Utilizadas
